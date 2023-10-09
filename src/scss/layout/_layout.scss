@@ -1,0 +1,24 @@
+.layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(min-content, 100px)) 1fr;
+    grid-template-rows: min-content 1fr;
+
+    grid-template-areas: ". header header header header header header header header header header header header ."
+                         ". anyContent anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent .";
+    row-gap: 2rem;
+    background-image: url('../../../src/assets/img/background.jpg');
+}
+
+.header {
+    grid-area: header;
+}
+
+.anyContent {
+    grid-area: anyContent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}

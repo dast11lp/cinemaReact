@@ -1,0 +1,102 @@
+@use "../abstracts//variables" as v;
+
+.function-page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: rgba($color: v.$color-primary, $alpha: 1);
+    border-radius: 7px;
+
+    width: 100%;
+    min-height: 100%;
+    padding: 1rem;
+
+    &__movie-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5rem;
+
+        &__title {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        &__img {
+            max-height: 40rem;
+            border-radius: 4px;
+        }
+
+        &__meta-data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            margin: 10px 0;
+        }
+
+        &__description {
+            text-align: center;
+            margin: 5px 0;
+
+            &__title {
+                margin: 5px 0;
+            }
+        }
+    }
+
+    &__function-list {
+        &__details {
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        &__individual {
+            position: relative;
+
+            display: flex;
+            justify-content: space-around;
+
+            background-color: v.$color-secundary;
+            color: v.$color-primary;
+            padding: 1.5rem;
+            border-radius: 7px;
+
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: all 0.2s ease;
+
+            &:hover {
+                transform: scale(1.02, 1.1);
+            }
+        }
+    }
+}
+
+.title-strong {
+    font-weight: 700;
+}
+
+.dropdown {
+    &__content {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+
+        height: 8%;
+        width: 100%;
+        top: -1%;
+        z-index: 1;
+
+        padding: 1.5rem;
+        background-color: v.$color-quaternary;
+        border-radius: 7px;
+    }
+}
+
+.dropdown--hidden {
+    display: none;
+}

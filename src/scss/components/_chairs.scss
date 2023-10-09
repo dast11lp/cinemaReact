@@ -1,0 +1,19 @@
+@use "../abstracts/variables" as v;
+
+.chairs {
+    display: grid;
+    grid-template-columns: repeat(10, 5rem);
+    grid-template-rows: repeat(6, 5rem);
+    gap: 2rem;
+    background-color: v.$color-primary;
+    padding: 20px;
+
+    &__chair{
+        justify-self: center;
+        &__icon {
+            padding: .5rem;
+            height: 5rem;
+            background-color: red;
+        }
+    }
+}

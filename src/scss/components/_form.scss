@@ -1,0 +1,71 @@
+@use '../abstracts/variables' as v;
+
+.form-box {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: v.$color-primary;
+    border-radius: 7px;
+
+    min-height: 90%;
+
+    flex-wrap: wrap;
+
+    .heading-primary {
+        font-size: v.$heading-secundary;
+    }
+
+    &__info {
+        display: flex;
+        flex: 0 0 20rem;
+        align-items: center;
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 25rem;
+        }
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        &__clipBoard {
+            width: 35rem;
+        }
+    }
+}
+
+.input {
+    position: relative;
+    &__field {
+        outline: none;
+        border: none;
+        background-color: v.$color-quaternary;
+        height: 4rem;
+        width: 30rem;
+        border-radius: 7px;
+        padding: 2rem 4rem;
+        
+
+        // &::placeholder {
+
+        // }
+    }
+
+    .icon-awesome {
+        height: 1.5rem;
+        position: absolute;
+
+        top: 30%;
+        left: 1rem;
+    }
+
+    .icon-awesome2{
+        height: 1.5rem;
+        position: absolute;
+        top: 30%;
+        right: 1rem;
+    }
+}
