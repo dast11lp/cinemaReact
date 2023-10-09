@@ -5,8 +5,8 @@ export const FunctionItem = ({ functionsMovie, functionsDate }) => {
   
 
   const dropDown = ({ target }) => {
-    let myDropDown = document.querySelector(`.dropdown--${functionsDate}`);
-    let alldropDown = document.querySelectorAll(".dropdown");
+    const myDropDown = document.querySelector(`.dropdown--${functionsDate}`);
+    const alldropDown = document.querySelectorAll(".dropdown");
 
     if (myDropDown.classList.contains("dropdown--hidden")) {
       alldropDown.forEach((el) => {
