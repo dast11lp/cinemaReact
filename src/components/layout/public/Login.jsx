@@ -29,7 +29,6 @@ export const Login = () => {
   return (
     <>
       <div className="form-box">
-
         <div className="form-box__info">
           <form onSubmit={handleSubmit(onSubmit)} className="form-box__info__form">
             <h2 className="heading-primary">Registrate en CinePop para continuar</h2>

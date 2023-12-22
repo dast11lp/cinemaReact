@@ -8,6 +8,7 @@ import { Header } from "../components/layout/common/Header";
 import { Food } from "../components/layout/common/Food";
 import { FunctionsMovie } from "../components/layout/common/FunctionsMovie";
 import { Chairs } from "../components/layout/common/Chairs"; 
+import { Logout } from "../components/layout/private/LogOut";
 
 export const Routing = () => {
   return (
@@ -16,8 +17,9 @@ export const Routing = () => {
         <Header />
         <div className="anyContent">
           <Routes>
-            <Route path="/" element={<Home />}>
+            <Route path="" element={<Home />}>
               <Route path="login" element={<Login />} />
+              <Route path="logout" element={<Logout />} />
               <Route path="cartelera" element={<ListingMovies />} />
               <Route path="registro" element={<Register />} />
               <Route path="comidas" element={<Food />} />

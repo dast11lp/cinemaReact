@@ -23,11 +23,6 @@ export const Input = ({name, type,placeholder, register, required, minLength, ma
   return (
     <div className='input'>
         <label name={name} htmlFor="" ></label>
-        {/* {
-          pattern == undefined || pattern =="" ?
-          <input className='input' {...register(name, {required, minLength, maxLength, pattern})} type={type} placeholder={placeholder}/> :
-          <input className='input' {...register(name, {required, minLength, maxLength})} type={type} placeholder={placeholder}/>
-        } */}
         <FontAwesomeIcon icon={icon} className='icon-awesome'/>
         <input className='input__field' {...register(name, {required, minLength, maxLength, pattern})} type={type} placeholder={placeholder} />
         {

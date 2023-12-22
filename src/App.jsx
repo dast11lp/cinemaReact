@@ -1,12 +1,8 @@
-import './App.scss'
-import { Routing } from './routes/Routing'
+import "./App.scss";
+import { Routing } from "./routes/Routing";
 
 function App() {
-
-
-  return (
-     <Routing />
-  )
+  return <Routing />;
 }
 
-export default App
+export default App;

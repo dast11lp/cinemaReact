@@ -7,13 +7,16 @@
     gap: 2rem;
     background-color: v.$color-primary;
     padding: 20px;
+    border-radius: 5px;
 
     &__chair{
         justify-self: center;
         &__icon {
             padding: .5rem;
             height: 5rem;
-            background-color: red;
+        }
+        &:hover{
+            color: v.$color-tertiary;
         }
     }
 }

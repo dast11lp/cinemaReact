@@ -3,6 +3,7 @@ import { loginFetch } from "../../app/api";
 
 const initialState = {
   userLogin: {},
+  login: false,
 };
 
 const authSlice = createSlice({
@@ -12,6 +13,7 @@ const authSlice = createSlice({
     setLogin: (state, action) => {
       state.userLogin = action.payload;
       localStorage.setItem("token", state.userLogin.Authorization)
+      state.login = true
     },
   },
 });

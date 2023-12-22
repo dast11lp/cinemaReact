@@ -1,4 +1,4 @@
-import { faChair } from "@fortawesome/free-solid-svg-icons";
+import { faChair, faCouch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ export const Chairs = ({ functionMovie }) => {
     <div className="chairs">
       {chairs?.map((el, i) => (
         <div className="chairs__chair" key={i}>
-          <FontAwesomeIcon icon={faChair} className="chairs__chair__icon"/>
+          <FontAwesomeIcon icon={faCouch} className="chairs__chair__icon"/>
         </div>
       ))}
     </div>
