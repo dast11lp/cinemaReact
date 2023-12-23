@@ -12,20 +12,25 @@ const authSlice = createSlice({
   reducers: {
     setLogin: (state, action) => {
       state.userLogin = action.payload;
-      localStorage.setItem("token", state.userLogin.Authorization)
-      state.login = true
+      localStorage.setItem("token", state.userLogin.Authorization);
+      state.login = true;
     },
   },
 });
 
-export const login =(user, navigate) => async (dispatch) => {
+export const login = (user, navigate) => async (dispatch) => {
+  try {
     const data = await loginFetch(user);
     dispatch(setLogin(data));
-    // mover a otra parte
-    const token = localStorage.getItem("token")
-    if(token) {
-      navigate("/")
-    }
+  } catch (error) {
+    throw error;
+  }
+
+  // mover a otra parte
+  const token = localStorage.getItem("token");
+  if (token) {
+    navigate("/");
+  }
 };
 
 export const { setLogin } = authSlice.actions;

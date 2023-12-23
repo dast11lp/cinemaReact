@@ -1,0 +1,52 @@
+@use '../abstracts/variables' as v;
+
+.modal {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: v.$color--quinar;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__box {
+        position: relative;
+        background-color: v.$color-secundary;
+        color: v.$color-primary;
+
+        
+        height: 55vh;
+        width: 50vw;
+
+        max-width: 66rem;
+        max-height: 38.2rem;
+        border-radius: 4px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 3rem;
+        }
+
+        &__content {
+            text-align: center;
+            & h2 {
+                color: v.$color--error-primary;
+                font-size: 5rem;
+            }
+    
+            & p {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+        }
+    }
+}

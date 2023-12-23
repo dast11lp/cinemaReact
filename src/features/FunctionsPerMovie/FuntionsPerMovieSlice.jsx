@@ -14,22 +14,26 @@ const listFunctionsPerMovie = createSlice({
       state.movieFunction = action.payload;
       const map = new Map();
 
-      state.movieFunction.functionMovie.forEach((el,i) => {
-        if(!map.has(el.function.date)) {
-          map.set(el.function.date,[])
+      state.movieFunction.functionMovie.forEach((el, i) => {
+        if (!map.has(el.function.date)) {
+          map.set(el.function.date, []);
           // map.set("id",i)
         }
         map.get(el.function.date).push(el);
       });
 
-      state.functionPerDate = Object.fromEntries(map)
+      state.functionPerDate = Object.fromEntries(map);
     },
   },
 });
 
 export const getFuncMovieMiddleware = (id) => async (dispatch) => {
-  const data = await listFuncMovieFetch(id);
-  dispatch(getListFuncPerMovie(data));
+  try {
+    const data = await listFuncMovieFetch(id);
+    dispatch(getListFuncPerMovie(data));
+  } catch (error) {
+    throw error
+  }
 };
 
 export const { getListFuncPerMovie } = listFunctionsPerMovie.actions;

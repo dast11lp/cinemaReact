@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LitingMoviesFetch } from "../../app/api";
+import { ListingMoviesFetch } from "../../app/api";
 
 const initialState = {
   listingMovies: [],
@@ -18,8 +18,14 @@ const ListingMoviesSlice = createSlice({
 
 
 export const getMoviesMiddleware = () => async (dispatch) => {
-    const data = await LitingMoviesFetch();
-    dispatch(getMovies(data));
+    try {
+      const data = await ListingMoviesFetch();
+      dispatch(getMovies(data));
+      // return data;
+    }catch(error) {
+      throw error
+    }
+    
 }
 
 export const {getMovies} = ListingMoviesSlice.actions;

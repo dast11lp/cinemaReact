@@ -9,8 +9,14 @@ import { Food } from "../components/layout/common/Food";
 import { FunctionsMovie } from "../components/layout/common/FunctionsMovie";
 import { Chairs } from "../components/layout/common/Chairs"; 
 import { Logout } from "../components/layout/private/LogOut";
+import { useSelector } from "react-redux";
+import { Modal } from "../components/layout/common/Modal";
 
 export const Routing = () => {
+
+  const modalSlice = useSelector((state) => state.modal.modalData);
+  const modalOpen = modalSlice.open
+
   return (
     <BrowserRouter>
       <div className="layout">
@@ -40,6 +46,7 @@ export const Routing = () => {
             />
           </Routes>
         </div>
+        {modalOpen && <Modal />}
       </div>
     </BrowserRouter>
   );
