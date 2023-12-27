@@ -1,4 +1,4 @@
-import Config from "./config";
+import {Config} from "./config";
 
 export const loginFetch = async (user) => {
   try {
@@ -40,6 +40,22 @@ export const listFuncMovieFetch = async (id) => {
       headers: {
         "Content-Type": "application/json",
       },
+    });
+    const data = await request.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const functionFetch = async (id) => {
+  try {
+    const request = await fetch(`${Config.hostname}functions/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
     const data = await request.json();
     return data;

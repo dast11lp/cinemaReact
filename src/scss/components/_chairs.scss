@@ -11,12 +11,33 @@
 
     &__chair{
         justify-self: center;
+        position: relative;
+
+        &--reserved{ 
+            color: v.$color--senary;
+            
+            
+        }
+        &--not-reserved {
+            &:hover{
+                color: v.$color-tertiary;
+            }
+        }
+
+       
+
         &__icon {
             padding: .5rem;
             height: 5rem;
         }
-        &:hover{
-            color: v.$color-tertiary;
+
+        &__number {
+            // position: absolute;
+            top: 50%;
+            color: black;
+            
         }
+
+        
     }
 }

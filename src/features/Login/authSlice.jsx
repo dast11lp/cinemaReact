@@ -12,9 +12,19 @@ const authSlice = createSlice({
   reducers: {
     setLogin: (state, action) => {
       state.userLogin = action.payload;
-      localStorage.setItem("token", state.userLogin.Authorization);
+      localStorage.setItem("token", JSON.stringify(state.userLogin));
       state.login = true;
     },
+    setLogOut: (state, action) => {
+      state.userLogin = {}
+      localStorage.removeItem("token")
+      state.login = false;
+    },
+    getLogin: (state, action) => {
+      state.userLogin  = JSON.parse(localStorage.getItem("token"));
+      if(state.userLogin)
+        state.login = true; 
+    }
   },
 });
 
@@ -33,6 +43,6 @@ export const login = (user, navigate) => async (dispatch) => {
   }
 };
 
-export const { setLogin } = authSlice.actions;
+export const { setLogin, setLogOut, getLogin } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -3,18 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../../features/Modal/modalSlice";
-import { capitalize } from "../../../helpers/helpers";
+import { Link } from "react-router-dom";
 
 export const Modal = () => {
   const dispatch = useDispatch();
-  const modalSlice = useSelector(state => state.modal.modalData)
+  const modalSlice = useSelector((state) => state.modal.modalData);
 
   const closeModal = () => {
-    dispatch(setModal({
-      type: undefined,
-      message: undefined,
-      open: false,
-    }));
+    dispatch(
+      setModal({
+        type: undefined,
+        title: undefined,
+        message: undefined,
+        open: false,
+      })
+    );
   };
 
   return (
@@ -24,8 +27,12 @@ export const Modal = () => {
           <FontAwesomeIcon icon={faCircleXmark} />
         </div>
         <div className="modal__box__content">
-          <h2>{capitalize(modalSlice.type)} </h2>
+          <h2>{modalSlice.title} </h2>
           <p>{modalSlice.message}</p>
+        </div>
+        <div className="modal__button-section">
+          {modalSlice.type == "info" ? <Link className="button">Aceptar</Link>: '' }
+          <button className="button button--reject" onClick={closeModal}>Cancelar</button>
         </div>
       </div>
     </div>

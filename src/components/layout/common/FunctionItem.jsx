@@ -37,7 +37,7 @@ export const FunctionItem = ({ functionsMovie, functionsDate }) => {
             data-content={functionsDate}
           >
             <h4>Hora: {el.function.hourTime}</h4>
-            <Link to={`/funcion/${el.function.hourTime}`} className="link">
+            <Link to={`/funcion/${el.function.id}/tickets/${el.function.id}`} className="link">
               Ver Disponibilidad
             </Link>
           </div>

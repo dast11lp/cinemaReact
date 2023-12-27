@@ -14,9 +14,9 @@ export const ListingMovies = () => {
   useEffect(() => {
     dispatch(getMoviesMiddleware())
     .catch((error) => {
-      //dispatch(setError(true))
       dispatch(setModal({
         type: "error",
+        title: "Error de conexion.",
         message: error.toString(),
         open: true,
       }))

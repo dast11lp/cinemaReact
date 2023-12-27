@@ -21,7 +21,6 @@ export const getMoviesMiddleware = () => async (dispatch) => {
     try {
       const data = await ListingMoviesFetch();
       dispatch(getMovies(data));
-      // return data;
     }catch(error) {
       throw error
     }

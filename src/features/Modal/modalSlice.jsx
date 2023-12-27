@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     modalData: {
         type: undefined,
+        title: undefined,
         message: undefined,
         open: false,
     }

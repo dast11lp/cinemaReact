@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { setLogOut } from "../../../features/Login/authSlice";
 
 export const Navbar = () => {
 
   const login = useSelector((state)=> state.auth.login)
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  const dispatch = useDispatch()
 
-    // if (token) setLogin(true);
-  }, [login]);
+  const logOut= () => {
+    dispatch(setLogOut())
+  }
 
   return (
     <nav className="navbar">
@@ -47,16 +48,17 @@ export const Navbar = () => {
             </li>
 
             <li className="navbar__links__item">
-              <NavLink to="login" className="navbar__links__item__link">
+              <Link to="login" className="button button--nav">
                 Login
-              </NavLink>
+              </Link>
             </li>
           </>
         ) : (
           <li className="navbar__links__item">
-            <NavLink to="logout" className="navbar__links__item__link">
+            {/* <NavLink  className="button button--nav" onClick={logOut}> */}
+            <button  className="button button--nav" onClick={logOut}>
               Logout
-            </NavLink>
+            </button>
           </li>
         )}
       </ul>

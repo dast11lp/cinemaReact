@@ -34,8 +34,8 @@ export const Login = () => {
             <h2 className="heading-primary">Registrate en CinePop para continuar</h2>
             <Input name="username" type="text" placeholder={'username'} register={register} required={true} minLength={6} maxLength={20} pattern= {patternUsername} icon={faUser}/>
             <Input name="password" type="password" placeholder={'password'} register={register} required={true} minLength={6} maxLength={20} pattern= {patternPassword} icon={faKey} icon2={faEye}/>
-            <CheckBox />
-            <button type="submit">Enviar</button>
+            {/* <CheckBox /> */}
+            <button type="submit" className="button button--nav">Enviar</button>
           </form>
         </div>
   

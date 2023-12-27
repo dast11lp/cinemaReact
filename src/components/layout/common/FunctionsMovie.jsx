@@ -8,9 +8,7 @@ export const FunctionsMovie = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const listFuntions = useSelector((state) => state.listFunc.movieFunction);
-  const functionPerDate = useSelector(
-    (state) => state.listFunc.functionPerDate
-  );
+  const functionPerDate = useSelector((state) => state.listFunc.functionPerDate);
 
   getFuncMovieMiddleware(id);
 

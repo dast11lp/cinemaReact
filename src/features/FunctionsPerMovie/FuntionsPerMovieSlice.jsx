@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { listFuncMovieFetch } from "../../app/api";
+import { current } from "@reduxjs/toolkit";
 
 const initialState = {
   movieFunction: {},
   functionPerDate: {},
+  chairs: []
 };
 
 const listFunctionsPerMovie = createSlice({
@@ -17,7 +19,6 @@ const listFunctionsPerMovie = createSlice({
       state.movieFunction.functionMovie.forEach((el, i) => {
         if (!map.has(el.function.date)) {
           map.set(el.function.date, []);
-          // map.set("id",i)
         }
         map.get(el.function.date).push(el);
       });
