@@ -6,6 +6,7 @@ const initialState = {
         title: undefined,
         message: undefined,
         open: false,
+        others: {}
     }
 }
 

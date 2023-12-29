@@ -57,6 +57,7 @@ export const functionFetch = async (id) => {
         "Content-Type": "application/json"
       }
     });
+    
     const data = await request.json();
     return data;
   } catch (error) {
@@ -64,3 +65,25 @@ export const functionFetch = async (id) => {
     throw error;
   }
 };
+
+export const reserveFetch = async (body) => {
+  const idUser = JSON.parse(localStorage.getItem("user"))?.userData?.idUser;
+
+  try {
+    const request = await fetch(`${Config.hostname}reservation/user/${idUser}/reserve-function-movie/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify(body)
+    });
+    console.log("mi promesa: ",request);
+    const data = await request.json();
+    return data;
+    
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

@@ -9,25 +9,12 @@
     padding: 20px;
     border-radius: 5px;
 
-    &__chair{
+    &__chair {
         justify-self: center;
         position: relative;
 
-        &--reserved{ 
-            color: v.$color--senary;
-            
-            
-        }
-        &--not-reserved {
-            &:hover{
-                color: v.$color-tertiary;
-            }
-        }
-
-       
-
         &__icon {
-            padding: .5rem;
+            padding: 0.5rem;
             height: 5rem;
         }
 
@@ -35,9 +22,19 @@
             // position: absolute;
             top: 50%;
             color: black;
-            
         }
 
-        
+        &--reserved {
+            color: v.$color--senary;
+        }
+        &--not-reserved {
+            &:hover {
+                color: v.$color-tertiary;
+            }
+        }
+
+        &--selected {
+            color: v.$color--septenary;
+        }
     }
 }

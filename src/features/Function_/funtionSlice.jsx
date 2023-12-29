@@ -1,10 +1,16 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { functionFetch } from "../../app/api";
+import { functionFetch, reserveFetch } from "../../app/api";
 
 const initialState = {
   function_: {},
-  desiredSeats: 0,
-  availableSeats: 0,
+  desiredTickets: 0,
+  availableTickets: 0,
+  numSelectedSeats: 0,
+  selectedSeats: [],
+  reservationDetails: {
+    functionChairs: [],
+    idFunMov: undefined,
+  },
 };
 
 const functionSlice = createSlice({
@@ -13,21 +19,55 @@ const functionSlice = createSlice({
   reducers: {
     setFunction_: (state, action) => {
       state.function_ = action.payload;
+      state.reservationDetails.idFunMov =
+        action.payload.listFunctionMovie[0].id;
     },
     addSeat: (state, action) => {
-      if (state.availableSeats > state.desiredSeats) state.desiredSeats += 1;
+      if (state.availableTickets > state.desiredTickets)
+        state.desiredTickets += 1;
     },
     subtractSeat: (state, action) => {
-      if (state.desiredSeats > 0) state.desiredSeats -= 1;
+      if (state.desiredTickets > 0) state.desiredTickets -= 1;
     },
-    getAvailableSeats: (state, action) => {
-      state.availableSeats = state.function_.functionChairs.filter(
+    getAvailableTickets: (state, action) => {
+      state.availableTickets = state.function_.functionChairs.filter(
         (el) => el.available == true
       ).length;
-      console.log(state.availableSeats);
     },
-    clearDesiredSeats: (state, action) => {
-      state.desiredSeats = 0;
+    cleardesiredTickets: (state, action) => {
+      state.desiredTickets = 0;
+    },
+
+    clearSlice: (state) => {
+      state.function_ = {},
+      state.availableTickets = 0,
+      state.selectedSeats = [],
+      state.reservationDetails = {
+        functionChairs: [],
+        idFunMov: undefined,
+      };
+    },
+
+    setDesiredSeats: (state, action) => {
+      state.numSelectedSeats = action.payload;
+    },
+    setIdSeats: (state, action) => {
+      if (state.numSelectedSeats > 0) {
+        state.numSelectedSeats -= 1;
+        state.reservationDetails.functionChairs.push(action.payload);
+        state.selectedSeats.push(action.payload);
+      } else {
+        console.log("te jodiste hermano");
+      }
+    },
+    removeIdSeats: (state, action) => {
+      if (state.numSelectedSeats >= 0) {
+        state.numSelectedSeats += 1;
+        state.reservationDetails.functionChairs = state.reservationDetails.functionChairs.filter((el) => el != action.payload);
+        console.log("el que se debe borrar: ", action.payload);
+        state.selectedSeats = state.selectedSeats.filter((el) => el != action.payload);
+      } else {
+      }
     },
   },
 });
@@ -36,7 +76,16 @@ export const functionFetchMiddleware = (id) => async (dispatch) => {
   try {
     const data = await functionFetch(id);
     dispatch(setFunction_(data));
-    dispatch(getAvailableSeats());
+    dispatch(getAvailableTickets());
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const reserveFetchMiddleware = (body) => async (dispatch) => {
+  try {
+    const data = await reserveFetch(body);
+    console.log(data);
   } catch (error) {
     throw error;
   }
@@ -46,8 +95,13 @@ export const {
   setFunction_,
   addSeat,
   subtractSeat,
-  getAvailableSeats,
-  clearDesiredSeats,
+  getAvailableTickets,
+  cleardesiredTickets,
+  clearSlice,
+  setDesiredSeats,
+  setIdSeats,
+  removeIdSeats,
+  setFunctionMov,
 } = functionSlice.actions;
 
 export default functionSlice.reducer;

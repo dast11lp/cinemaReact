@@ -4,6 +4,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../../features/Modal/modalSlice";
 import { Link } from "react-router-dom";
+import { removeIdSeats, setIdSeats } from "../../../features/Function_/funtionSlice";
 
 export const Modal = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,21 @@ export const Modal = () => {
         type: undefined,
         title: undefined,
         message: undefined,
-        open: false,
+        open: false, 
       })
     );
   };
+
+  const selectSeat = () => {
+    dispatch(setIdSeats(modalSlice.others.idSeat))
+    closeModal()
+  }
+
+  const removeSeat = () => {
+    console.log("¿me ejecuto?");
+    dispatch(removeIdSeats(modalSlice.others.idSeat))
+    closeModal()
+  }
 
   return (
     <div className="modal">
@@ -32,6 +44,8 @@ export const Modal = () => {
         </div>
         <div className="modal__button-section">
           {modalSlice.type == "info" ? <Link className="button">Aceptar</Link>: '' }
+          {modalSlice.type == "reserve" ? <button className="button" onClick={selectSeat}>Aceptar</button>: '' }
+          {modalSlice.type == "remove" ? <button className="button" onClick={removeSeat}>Remover</button>: '' }
           <button className="button button--reject" onClick={closeModal}>Cancelar</button>
         </div>
       </div>

@@ -6,7 +6,8 @@
     align-items: center;
 
     height: 3.5rem;
-    width: 8rem;
+    min-width: 6rem;
+    padding: 1rem 2rem;
     background: v.$color-primary;
     color: v.$color-secundary;
     font-size: 1.6rem;
@@ -17,6 +18,15 @@
 
     transition: all .2s;
     text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: translateY(3px)
+    }
    
     &--reject{
         background-color: v.$color--senary;
@@ -38,4 +48,6 @@
         color: v.$color--disabled-font;
         background: v.$color--disabled-backgroud;
     }
+
+    
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { setLogOut } from "../../../features/Login/authSlice";
 
 export const Navbar = () => {
@@ -8,9 +8,11 @@ export const Navbar = () => {
   const login = useSelector((state)=> state.auth.login)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logOut= () => {
     dispatch(setLogOut())
+    useNavigate("/")
   }
 
   return (

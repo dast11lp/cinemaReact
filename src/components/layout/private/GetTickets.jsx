@@ -2,13 +2,13 @@ import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSeat, clearDesiredSeats, functionFetchMiddleware, subtractSeat } from "../../../features/Function_/funtionSlice";
+import { addSeat, functionFetchMiddleware, setDesiredSeats, subtractSeat } from "../../../features/Function_/funtionSlice";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 export const GetTickets = () => {
 
   const dispatch = useDispatch();
-  const seatsSelected = useSelector((state) => state.function_.desiredSeats);
+  const desiredTickets = useSelector((state) => state.function_.desiredTickets);
 
   const [isDisabled, setIsDisabled] = useState(true)
 
@@ -19,9 +19,12 @@ export const GetTickets = () => {
   }, []);
 
   useEffect(()=> {
-    if(seatsSelected > 0) setIsDisabled(false)
+    if(desiredTickets > 0) setIsDisabled(false)
     else setIsDisabled(true)
-  },[seatsSelected])
+    return () => {
+      dispatch(setDesiredSeats(desiredTickets))
+    }
+  },[desiredTickets])
 
   return (
     <div className="how-many">
@@ -30,7 +33,7 @@ export const GetTickets = () => {
         <div className="remove" onClick={() => dispatch(subtractSeat())}>
           <FontAwesomeIcon icon={faCircleMinus} />
         </div>
-        <span>{seatsSelected}</span>
+        <span>{desiredTickets}</span>
         <div className="add" onClick={() => dispatch(addSeat())}>
           <FontAwesomeIcon icon={faCirclePlus} />
         </div>
