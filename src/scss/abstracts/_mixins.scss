@@ -1,0 +1,5 @@
+@mixin links-navbar($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        display: none;
+    }
+}

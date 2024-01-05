@@ -1,73 +1,72 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { setLogOut } from "../../../features/Login/authSlice";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { setLogOut } from "../../../features/Auth/authSlice";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Navbar = () => {
+  const location = useLocation()
 
-  const login = useSelector((state)=> state.auth.login)
+  const [OpenMenu, setOpenMenu] = useState(false);
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const user = useSelector((state) => state.auth.userLogin?.userData);
 
-  const logOut= () => {
-    dispatch(setLogOut())
-    useNavigate("/")
-  }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    dispatch(setLogOut());
+    navigate("/");
+  };
 
   return (
-    <nav className="navbar">
-      <div className="brand">
-        <i>Logo</i>
-        <Link className="brand__name">CINEPOP</Link>
+    <div className="navbar">
+      <div className="navbar__nav">
+        <div className="navbar__nav__left">
+          <div className="navbar__nav__left__brand">
+            {/* <svg></svg> */}
+            <Link className="navbar__nav__left__brand__name" to="/">
+              CinePop
+            </Link>
+          </div>
+          <div className="navbar__nav__left__navlinks">
+            <ul className="navbar__nav__left__navlinks__links">
+              <li className="navbar__nav__left__navlinks__links__li">
+                <NavLink className="navbar__nav__left__navlinks__links__li__link" to="/">Inicio</NavLink>
+              </li>
+              <li className="navbar__nav__left__navlinks__links__li">
+                <NavLink className="navbar__nav__left__navlinks__links__li__link" to="/cartelera">Cartelera</NavLink>
+              </li>
+              <li className="navbar__nav__left__navlinks__links__li">
+                <NavLink className="navbar__nav__left__navlinks__links__li__link" to="/comidas">Comidas</NavLink>
+              </li>
+              {!user && 
+              <li className="navbar__nav__left__navlinks__links__li">
+                <NavLink className="navbar__nav__left__navlinks__links__li__link" to="/registro">Registrarse</NavLink>
+              </li>}
+            </ul>
+          </div>
+        </div>
+
+        <div className="navbar__nav__right">
+          {user ? (
+            <div className="navbar__nav__right__user">
+              <div className="navbar__nav__right__user__button" onClick={() => setOpenMenu(!OpenMenu)} >
+                <img src="asdasd.img" alt="user" />
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+              <div className={`navbar__nav__right__user__menu ${ OpenMenu && "active-menu" }`} >
+                <Link onClick={logOut} to="#"> Cerrar Sesión </Link>
+              </div>
+            </div>
+          ) : (
+            <Link to="/login" className={`button ${location.pathname == "/" &&"button--secundary"}`}>
+              Iniciar Sesión
+            </Link>
+          )}
+        </div>
       </div>
-
-      <ul className="navbar__links">
-        <li className="navbar__links__item">
-          <NavLink to="/" className="navbar__links__item__link ">
-            Inicio
-          </NavLink>
-        </li>
-
-        <li className="navbar__links__item">
-          <NavLink to="cartelera" className="navbar__links__item__link">
-            Cartelera
-          </NavLink>
-        </li>
-
-        <li className="navbar__links__item">
-          <NavLink to="comidas" className="navbar__links__item__link">
-            Comidas
-          </NavLink>
-        </li>
-
-        {!login ? (
-          <>
-            <li className="navbar__links__item">
-              <NavLink to="registro" className="navbar__links__item__link">
-                Registrarse
-              </NavLink>
-            </li>
-
-            <li className="navbar__links__item">
-              <Link to="login" className="button button--nav">
-                Login
-              </Link>
-            </li>
-          </>
-        ) : (
-          <li className="navbar__links__item">
-            {/* <NavLink  className="button button--nav" onClick={logOut}> */}
-            <button  className="button button--nav" onClick={logOut}>
-              Logout
-            </button>
-          </li>
-        )}
-      </ul>
-
-      <div>
-        <input className="search" type="text" placeholder="Buscar" />
-      </div>
-    </nav>
+    </div>
   );
 };

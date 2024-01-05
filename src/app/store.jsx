@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import auth from '../features/Login/authSlice';
+import auth from '../features/Auth/authSlice';
 import listMovies from '../features/ListingMovies/ListingMoviesSlice'
 import listFunc from '../features/FunctionsPerMovie/FuntionsPerMovieSlice'
 import modal from '../features/Modal/modalSlice'

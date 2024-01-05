@@ -2,16 +2,15 @@ import { Navbar } from './Navbar'
 import { HeaderContent } from './HeaderContent'
 import { useLocation } from 'react-router-dom';
 
+
 export const Header = () => {
-
-  const url = useLocation();
-
+  const location = useLocation();
   return (
-    <div className='header'>
-        <Navbar />
-        {
-          url.pathname == '/' && <HeaderContent />
-        }
-    </div>
+    <header className={`header ${location.pathname == "/"? "header--viewport" : ""}`}>
+        <div className='header__nav'>
+          <Navbar />
+        </div>
+        {location.pathname == "/" ? <HeaderContent />: ""}
+    </header>
   )
 }

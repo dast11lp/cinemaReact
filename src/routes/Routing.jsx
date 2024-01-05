@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
 import { Home } from "../components/layout/common/Home";
 import { ListingMovies } from "../components/layout/common/ListingMovies";
 import { Login } from "../components/layout/public/Login";
@@ -10,15 +10,18 @@ import { FunctionsMovie } from "../components/layout/common/FunctionsMovie";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../components/layout/common/Modal";
 import { Function_ } from "../components/layout/private/Function_";
-import { getLogin } from "../features/Login/authSlice";
+import { getLogin } from "../features/Auth/authSlice";
 import { GetTickets } from "../components/layout/private/getTickets";
 import { FunctionSeats } from "../components/layout/private/FunctionSeats";
+import { PublicLayout } from "../components/layout/public/PublicLayout";
+import { PrivateLayout } from "../components/layout/private/PrivateLayout";
 
 export const Routing = () => {
   const dispatch = useDispatch();
 
   const modalSlice = useSelector((state) => state.modal.modalData);
   const modalOpen = modalSlice.open;
+
 
   useEffect(() => {
     dispatch(getLogin());
@@ -30,17 +33,20 @@ export const Routing = () => {
         <Header />
         <div className="anyContent">
           <Routes>
-            <Route path="" element={<Home />}>
+            <Route path="/" element={<PublicLayout />}>
               <Route path="login" element={<Login />} />
               <Route path="cartelera" element={<ListingMovies />} />
               <Route path="registro" element={<Register />} />
               <Route path="comidas" element={<Food />} />
               <Route path="funciones/:id" element={<FunctionsMovie />} />
-              <Route path="funcion/:id" element={<Function_ />}>
-                <Route path="seats/:id" element={<FunctionSeats />} />
-                <Route path="tickets/:id" element={<GetTickets />} />
-              </Route>
             </Route>
+
+            <Route path="/compras" element={<PrivateLayout />}>
+              <Route path="funcion/" element={<Function_ />}>
+                  <Route path="tickets/:id" element={<GetTickets />} />
+                  <Route path="seats/:id" element={<FunctionSeats />} />
+                </Route>
+              </Route>
 
             <Route
               path="*"
@@ -53,6 +59,8 @@ export const Routing = () => {
                 </>
               }
             />
+
+
           </Routes>
         </div>
         {modalOpen && <Modal />}

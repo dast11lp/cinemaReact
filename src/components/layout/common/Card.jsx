@@ -14,7 +14,6 @@ export const Card = ({title, img, language, director, protagonists, description,
         <p className='card__movie-meta__protagonists'>{protagonists}</p>
       </div>
       
-      {/* <p className='card__description card__item'>{description}</p> */}
     </div>
   )
 }

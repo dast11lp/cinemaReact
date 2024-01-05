@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {Config} from "./config";
 
 export const loginFetch = async (user) => {
@@ -78,12 +79,28 @@ export const reserveFetch = async (body) => {
       },
       body: JSON.stringify(body)
     });
-    console.log("mi promesa: ",request);
     const data = await request.json();
     return data;
     
   } catch (error) {
     console.error(error);
     throw error;
+  }
+}
+
+export const registerFetch = async(body) => {
+  try {
+    const request = await fetch(`${Config.hostname}auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body)
+    });
+    const data = await request.json();
+    return data
+  } catch (error) {
+    console.error(error);
+    throw error
   }
 }

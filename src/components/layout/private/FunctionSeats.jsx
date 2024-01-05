@@ -40,12 +40,11 @@ export const FunctionSeats = () => {
   const askForSeat = (available, idSeat) => {
     if (available) {
       if (selectedSeats.includes(idSeat)) {
-      // if (false) {
         dispatch(
           setModal({
             type: "remove",
-            title: "Remover eleccioón",
-            message: "¿Desea quitar el asientod e su lsita de reservas?",
+            title: "Remover elección",
+            message: "¿Desea quitar el asiento de su lista de reservas?",
             open: true,
             others: {
               idSeat,

@@ -39,7 +39,7 @@ export const GetTickets = () => {
         </div>
       </div>
       <div className="how-many__button-section">
-        <Link to={isDisabled ? '#' : `/funcion/${id}/seats/${id}`} className={`button ${isDisabled ? 'button--disabled' : '' }`}>Siguiente</Link>
+        <Link to={isDisabled ? '#' : `/compras/funcion/seats/${id}`} className={`button ${isDisabled ? 'button--disabled' : '' }`}>Siguiente</Link>
       </div>
     </div>
   );

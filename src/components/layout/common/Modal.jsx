@@ -44,8 +44,8 @@ export const Modal = () => {
         </div>
         <div className="modal__button-section">
           {modalSlice.type == "info" ? <Link className="button">Aceptar</Link>: '' }
-          {modalSlice.type == "reserve" ? <button className="button" onClick={selectSeat}>Aceptar</button>: '' }
-          {modalSlice.type == "remove" ? <button className="button" onClick={removeSeat}>Remover</button>: '' }
+          {modalSlice.type == "reserve" ? <button className="button button--secundary" onClick={selectSeat}>Aceptar</button>: '' }
+          {modalSlice.type == "remove" ? <button className="button button--secundary" onClick={removeSeat}>Remover</button>: '' }
           <button className="button button--reject" onClick={closeModal}>Cancelar</button>
         </div>
       </div>

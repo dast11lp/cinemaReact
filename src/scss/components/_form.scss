@@ -39,19 +39,21 @@
 
 .input {
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: 5px;
+    }
+
     &__field {
         outline: none;
         border: none;
         background-color: v.$color-quaternary;
         height: 4rem;
-        width: 30rem;
+        min-width: 30rem;
         border-radius: 7px;
         padding: 2rem 4rem;
-        
-
-        // &::placeholder {
-
-        // }
     }
 
     .icon-awesome {
@@ -68,6 +70,18 @@
         top: 30%;
         right: 1rem;
     }
+
+    &__message {
+        font-size: 1.3rem;
+        &--success {
+            color: v.$color--septenary;
+        }
+
+        &--error {
+            color: v.$color--senary;
+        }
+    }
+    
 }
 
 

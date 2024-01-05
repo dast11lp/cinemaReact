@@ -1,7 +1,6 @@
 @use '../abstracts/variables' as v;
 
 .how-many {
-    color: v.$color-primary;
     font-size: 1.8rem;
 
     &__content {

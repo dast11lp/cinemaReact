@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as v;
+
+.select {
+    outline: none;
+    border: none;
+    background-color: v.$color-quaternary;
+    height: 4rem;
+    min-width: 30rem;
+    border-radius: 7px;
+
+    .options {
+        height: 5rem;
+        
+    }
+}

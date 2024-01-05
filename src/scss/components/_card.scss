@@ -7,15 +7,16 @@
     justify-content: space-evenly;
     font-size: 1.1rem;
 
-    background-color: v.$color-primary;
+    background-color: v.$color-secundary;
     min-height: 50rem;
 
     width: 30rem;
     
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: v.$border-primary;
 
     transition: all .3s ease-in-out;
+
 
 
     &__title{
@@ -24,7 +25,7 @@
 
     &__img {
         width: 20rem;
-        border-radius: 10px;
+        border-radius: v.$border-primary;
     }
 
     &__item:not(:last-child) {

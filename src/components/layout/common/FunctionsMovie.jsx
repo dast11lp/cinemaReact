@@ -26,26 +26,26 @@ export const FunctionsMovie = () => {
 
           <img
             src={listFuntions.poster}
-            alt=""
+            alt="img"
             className="function-page__movie-details__img"
           />
 
           <div className="function-page__movie-details__meta-data">
             <p className="function-page__movie-details__meta-data__language">
-              {" "}
-              <span className="title-strong">Idioma:</span>{" "}
+              
+              <span className="title-strong">Idioma:</span>
               {listFuntions.language}
             </p>
             <p className="function-page__movie-details__meta-data__director">
-              <span className="title-strong">director:</span>{" "}
+              <span className="title-strong">director:</span>
               {listFuntions.director}
             </p>
             <p className="function-page__movie-details__meta-data__country">
-              <span className="title-strong">País de origen:</span>{" "}
+              <span className="title-strong">País de origen:</span>
               {listFuntions.country}
             </p>
             <p className="function-page__movie-details__meta-data__protagonists">
-              <span className="title-strong">Protagonistas:</span>{" "}
+              <span className="title-strong">Protagonistas:</span>
               {listFuntions.protagonists}
             </p>
           </div>

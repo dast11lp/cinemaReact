@@ -1,6 +1,6 @@
 import { Input } from "../common/Input";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../features/Login/authSlice";
+import { login } from "../../../features/Auth/authSlice";
 
 import { useForm } from "react-hook-form";
 import { CheckBox } from "../common/CheckBox";
@@ -10,19 +10,17 @@ import { faEye, faKey, faUser} from '@fortawesome/free-solid-svg-icons'
 
 import clipBoard from '../../../assets/img/clapperboard.png'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Login = () => {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.auth.userLogin);
   const navigate = useNavigate()
   
 
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    dispatch(login(data, navigate));
-  };
-
+  const onSubmit = (data) => dispatch(login(data, navigate));
+ 
   const patternUsername = /[A-Za-z0-9]+/;
   const patternPassword = /[A-Za-z0-9]+/;
 
