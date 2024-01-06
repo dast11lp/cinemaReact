@@ -1,56 +1,49 @@
+@use '../abstracts/variables' as v;
+
 @mixin links-navbar($breakpoint) {
     @media screen and (max-width: $breakpoint) {
-        
-        .navbar__nav__left__navlinks__links{
-            
-        }
-     
         &__nav {
-
-           &__left {
-
-              &__brand {
-
-                 &__name {
-
-                 }
-              }
-              &__navlinks {
-
-                 
-                 &__links {
+            position: relative;
+            &__brand {
+                flex: 1 1;
+                &__name {
+                }
+            }
+            &__navlinks {
+                order: 3;
+                flex: 1 1;
+                justify-content: end;
+                
+                
+                &__links {
                     display: none;
                     position: absolute;
-     
-                    
+                    top: 100%;
+                    width: 100%;
+                    margin: 5px 0;
+                    padding: 10px 0;
+                    background: v.$color--octonary;
+                    border-radius: v.$border-primary;
                     &__li {
-                      
-                       &__link {
-                         
-                       }
+                        &__link {
+                        }
                     }
-                 }
-                 
-                 &__menu-burger {
+                }
+                &__menu-burger {
                     display: inline-block;
-                   }
-              }
-           }
-           &__right {
+                }
+            }
 
-     
-              &__user {
-   
-                 &__menu {
-           
-                 }
-                 &__menu::before {
-                    
-                 }
-              }
-           }
+            &__userbox {
+                display: flex;
+                justify-content: center;
+                &__user {
+                    &__menu {
+                    }
+                    &__menu::before {
+                    }
+                }
+            }
         }
-
-        
     }
 }

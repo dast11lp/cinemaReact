@@ -12,14 +12,13 @@
       flex: 1 1 140rem;
       display: flex;
       margin: auto;
-      &__left {
-         flex: 1 1;
-         display: flex;
+     
          &__brand {
             display: flex;
             align-items: center;
-            margin-right: 1.5rem;
+            flex-basis: 10%;
 
+            margin-right: 1.5rem;
             &__name {
                font-weight: 700;
                text-decoration: none;
@@ -31,13 +30,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1 1;
+            flex: 0 1  30%;
             
             &__links {
                flex: auto;
 
                display: flex;
-               justify-content: space-evenly;
+               justify-content: space-between;
                list-style: none;
 
                
@@ -54,12 +53,15 @@
                display: none;
             }
          }
-      }
-      &__right {
-         flex: 1 1;
 
-         display: flex;
-         justify-content: flex-end;
+
+         &__userbox{
+            flex: 1;
+            display: flex;
+            justify-content: end;
+         }
+      
+      
 
          &__user {
             position: relative;
@@ -97,9 +99,9 @@
             }
          }
       }
+      @include m.links-navbar(536px);
    }
-   @include m.links-navbar(536px);
-}
+   
 
 .active-menu {
    visibility: visible;
@@ -121,4 +123,10 @@
    left: 0 ;
    border-radius: 100px ;
    width: 100% ;
+}
+
+
+.active-menu-2 {
+   visibility: visible;
+   display: flex;
 }
