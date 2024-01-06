@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { setLogOut } from "../../../features/Auth/authSlice";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Navbar = () => {
@@ -31,6 +31,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="navbar__nav__left__navlinks">
+            <div className="navbar__nav__left__navlinks__menu-burger">
+              <FontAwesomeIcon icon={faBars} />
+            </div>
             <ul className="navbar__nav__left__navlinks__links">
               <li className="navbar__nav__left__navlinks__links__li">
                 <NavLink className="navbar__nav__left__navlinks__links__li__link" to="/">Inicio</NavLink>

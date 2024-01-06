@@ -30,13 +30,17 @@
          &__navlinks {
             display: flex;
             align-items: center;
+            justify-content: center;
             flex: 1 1;
+            
             &__links {
                flex: auto;
 
                display: flex;
                justify-content: space-evenly;
                list-style: none;
+
+               
                &__li {
                   margin: 0 5px;
                   position: relative;
@@ -45,6 +49,9 @@
                      color: v.$color-tertiary;
                   }
                }
+            }
+            &__menu-burger{
+               display: none;
             }
          }
       }
@@ -74,6 +81,8 @@
 
                 background-color: v.$color--disabled-backgroud;
                 border-radius: v.$border-primary;
+
+                z-index: 60;
             }
             &__menu::before {
                position: absolute;
@@ -89,6 +98,7 @@
          }
       }
    }
+   @include m.links-navbar(536px);
 }
 
 .active-menu {

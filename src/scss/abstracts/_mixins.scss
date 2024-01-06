@@ -1,5 +1,56 @@
 @mixin links-navbar($breakpoint) {
     @media screen and (max-width: $breakpoint) {
-        display: none;
+        
+        .navbar__nav__left__navlinks__links{
+            
+        }
+     
+        &__nav {
+
+           &__left {
+
+              &__brand {
+
+                 &__name {
+
+                 }
+              }
+              &__navlinks {
+
+                 
+                 &__links {
+                    display: none;
+                    position: absolute;
+     
+                    
+                    &__li {
+                      
+                       &__link {
+                         
+                       }
+                    }
+                 }
+                 
+                 &__menu-burger {
+                    display: inline-block;
+                   }
+              }
+           }
+           &__right {
+
+     
+              &__user {
+   
+                 &__menu {
+           
+                 }
+                 &__menu::before {
+                    
+                 }
+              }
+           }
+        }
+
+        
     }
 }
