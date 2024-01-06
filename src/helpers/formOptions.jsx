@@ -1,5 +1,5 @@
 const departsColom = {
-  0: "Bogotá D.C.",
+  33: "Bogotá D.C.",
   1: "Amazonas",
   2: "Antioquia",
   3: "Arauca",
@@ -35,9 +35,9 @@ const departsColom = {
 };
 
 const typeNidSelect = {
-  0: "Cédula de Ciudadanía",
-  1: "Cédula de Extranjera",
-  2: "Pasaporte",
+  1: "Cédula de Ciudadanía",
+  2: "Cédula de Extranjera",
+  3: "Pasaporte",
 };
 
 const requiredGeneralMessage = "Campo Requerido"

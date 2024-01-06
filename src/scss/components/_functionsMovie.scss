@@ -3,12 +3,10 @@
 .function-page {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    background-color: rgba($color: v.$color-primary, $alpha: 1);
-    border-radius: v.$border-primary;
 
     width: 100%;
     min-height: 100%;
-    padding: 1rem ;
+    padding: 1rem;
     gap: 1rem;
 
     &__movie-details {
@@ -17,8 +15,7 @@
         align-items: center;
         justify-content: center;
         padding: 0 5rem;
-        background-color: v.$color-secundary;
-        // color: v.$color-primary;
+        box-shadow: v.$color-light-shadow-secundary;
         border-radius: v.$border-primary;
 
         &__title {
@@ -63,7 +60,7 @@
             display: flex;
             justify-content: space-around;
 
-            background-color: v.$color-secundary;
+            box-shadow: v.$color-light-shadow-secundary;
             padding: 1.5rem;
             border-radius: v.$border-primary;
 
@@ -85,7 +82,9 @@
 .dropdown {
     color: v.$color-primary;
     font-size: 1.6rem;
+    margin: 5px 0;
     &__content {
+        margin: 5px 0;
         position: relative;
 
         display: flex;
@@ -100,8 +99,6 @@
         background-color: v.$color-quaternary;
         border-radius: v.$border-primary;
     }
-
-    
 }
 
 .dropdown--hidden {

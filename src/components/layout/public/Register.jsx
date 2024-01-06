@@ -9,9 +9,12 @@ export const Register = () => {
 
   const dispatch = useDispatch(); 
 
-  const { register, handleSubmit, watch,formState: {errors} } = useForm();
+  const { register, handleSubmit, watch,formState: {errors} } = useForm({
+    mode:'onChange'
+  });
   const [formOptions, setFormOptions] = useState({ ...registerOptions });
-  
+
+  console.log(errors)
 
   const onSubmit = (data)  => {
     dispatch(registerFetchMiddleware(data))

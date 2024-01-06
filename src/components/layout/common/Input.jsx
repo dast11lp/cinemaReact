@@ -83,14 +83,14 @@ export const Input = ({
           className="select"
           {...register(name, { required, minLength, maxLength, pattern })}
         >
-          <option>Seleccione</option>
+          <option value="">Seleccione</option>
           {Object.keys(options).map((el) => (
             <option key={el} className="options" value={el}>
               {options[el]}
             </option>
           ))}
         </select>
-        <p className={`input__message`}>{errors?.message}</p>
+        <p className={`input__message input__message--error`}>{errors?.message}</p>
       </div>
     ) : (
       <h3>No se incluyeron las opciones</h3>

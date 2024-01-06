@@ -3,15 +3,20 @@ import React from 'react'
 export const Card = ({title, img, language, director, protagonists, description, country}) => {
   return (
     <div className='card'>
-      <h2 className='card__title card__item'>{title}</h2>
 
-      <img src={img} alt="" className='card__img card__item'/>
+      <div className='card__img-container '>
+        <img  className="card__img-container__img" src={img} alt="" />
+      </div>
 
-      <div className='card__movie-meta card__item'>
-        <p className='card__movie-meta__language'>{language}</p>
-        <p className='card__movie-meta__director'>{director}</p>
-        <p className='card__movie-meta__country'>{country}</p>
-        <p className='card__movie-meta__protagonists'>{protagonists}</p>
+    
+      <div className='card__content '>
+        <h2 className='card__movie-meta card__movie-meta--title '>{title}</h2>
+        <div>
+          <p className='card__movie-meta'>{language}</p>
+          <p className='card__movie-meta'>{director}</p>
+          <p className='card__movie-meta'>{country}</p>
+          <p className='card__movie-meta'>{protagonists}</p>
+        </div>
       </div>
       
     </div>

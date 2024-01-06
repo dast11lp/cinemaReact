@@ -53,7 +53,7 @@ export const Navbar = () => {
           {user ? (
             <div className="navbar__nav__right__user">
               <div className="navbar__nav__right__user__button" onClick={() => setOpenMenu(!OpenMenu)} >
-                <img src="asdasd.img" alt="user" />
+                <img src="" alt="user" />
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className={`navbar__nav__right__user__menu ${ OpenMenu && "active-menu" }`} >

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
-import { Home } from "../components/layout/common/Home";
 import { ListingMovies } from "../components/layout/common/ListingMovies";
 import { Login } from "../components/layout/public/Login";
 import { Register } from "../components/layout/public/Register";
