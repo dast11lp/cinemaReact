@@ -60,6 +60,7 @@ export const Navbar = () => {
               </div>
               <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
                 <Link onClick={logOut} to="#"> Cerrar Sesión </Link>
+                <Link to="/usuario/miscompras"> Mis Compras </Link>
               </div>
             </div>
           ) : (

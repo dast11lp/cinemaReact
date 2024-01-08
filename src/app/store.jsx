@@ -4,6 +4,7 @@ import listMovies from '../features/ListingMovies/ListingMoviesSlice'
 import listFunc from '../features/FunctionsPerMovie/FuntionsPerMovieSlice'
 import modal from '../features/Modal/modalSlice'
 import function_ from '../features/Function_/funtionSlice'
+import reservation  from "../features/UniqueReserve/uniqueReserveSlice";
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
         listFunc,
         modal,
         function_,
+        reservation,
     }
 })

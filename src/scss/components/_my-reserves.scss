@@ -1,0 +1,16 @@
+@use "../abstracts/variables" as v;
+
+.my-reserves {
+    box-shadow: v.$color-light-shadow-secundary;
+    &__purchase-navbar {
+        &__ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            &__li {
+                &__link {
+                }
+            }
+        }
+    }
+}

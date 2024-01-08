@@ -104,3 +104,38 @@ export const registerFetch = async(body) => {
     throw error
   }
 }
+
+export const getUniqueReservation = async (idUser, idReservation)  => {
+  try {
+    const request = await fetch (`${Config.hostname}reservation/user/${idUser}/getReserve/${idReservation}`, {
+      method: "GET",
+      headers: {
+        "Content_type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+    const data = request.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error
+  }
+}
+
+
+export const getReservationIds = async (idUser)  => {
+  try {
+    const request = await fetch (`${Config.hostname}reservation/user/${idUser}/getMyReserveIds`, {
+      method: "GET",
+      headers: {
+        "Content_type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+    const data = request.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error
+  }
+}

@@ -18,6 +18,9 @@ export const FunctionSeats = () => {
   );
 
   const selectedSeats = useSelector((state) => state.function_.selectedSeats);
+  const desiredTickets = useSelector((state) => state.function_.desiredTickets);
+
+  const messageWhenEmptyTickets = "Previamente debe elegir  los tickets deseados"
 
   const howManySelectedSeats = useSelector(
     (state) => state.function_.numSelectedSeats
@@ -38,47 +41,84 @@ export const FunctionSeats = () => {
 
 
   const askForSeat = (available, idSeat) => {
-    if (available) {
-      if (selectedSeats.includes(idSeat)) {
-        dispatch(
-          setModal({
-            type: "remove",
-            title: "Remover elección",
-            message: "¿Desea quitar el asiento de su lista de reservas?",
-            open: true,
-            others: {
-              idSeat,
-            },
-          })
-        );
-      } else {
-        dispatch(
-          setModal({
-            type: "reserve",
-            title: "Reservar",
-            message: "¿Desea reservar este asiento?",
-            open: true,
-            others: {
-              idSeat,
-            },
-          })
-        );
-      }
-    } else {
+    if(desiredTickets == 0) {
       dispatch(
         setModal({
           type: "warr",
-          title: "Asiento ocupado",
-          message: "Este asiento se encuentra reservado.",
+          title: "",
+          message: messageWhenEmptyTickets,
           open: true,
         })
       );
+      return;
     }
+      if (available) {
+        if (selectedSeats.includes(idSeat)) {
+          dispatch(
+            setModal({
+              type: "remove",
+              title: "Remover elección",
+              message: "¿Desea quitar el asiento de su lista de reservas?",
+              open: true,
+              others: {
+                idSeat,
+              },
+            })
+          );
+        } else {
+          dispatch(
+            setModal({
+              type: "reserve",
+              title: "Reservar",
+              message: "¿Desea reservar este asiento?",
+              open: true,
+              others: {
+                idSeat,
+              },
+            })
+          );
+        }
+      } else {
+        dispatch(
+          setModal({
+            type: "warr",
+            title: "Asiento ocupado",
+            message: "Este asiento se encuentra reservado.",
+            open: true,
+          })
+        );
+      }
+    
   };
 
 
   const reserve = () => {
-    dispatch(reserveFetchMiddleware(reservationDetails));
+    if(desiredTickets == 0) {
+      dispatch(
+        setModal({
+          type: "warr",
+          title: "",
+          message: messageWhenEmptyTickets,
+          open: true,
+        })
+      );
+      return 
+    }
+
+    // reserva efectiva
+    if(selectedSeats.length  - desiredTickets === 0) {
+      dispatch(reserveFetchMiddleware(reservationDetails));
+    }else {
+      dispatch(
+        setModal({
+          type: "warr",
+          title: "",
+          message: `Aun te faltan ${desiredTickets - selectedSeats.length } asientos por elegir`,
+          open: true,
+        })
+      ); 
+    }
+    
   };
 
   return (
@@ -97,14 +137,14 @@ export const FunctionSeats = () => {
           {chairs?.map((el, i) => ( 
             <div
               className={`chairs__chair chairs__chair--${
-                !chairs[i].available ? "reserved" : "not-reserved"
+                !el.available ? "reserved" : "not-reserved"
               } ${
-                selectedSeats.includes(chairs[i].id)
+                selectedSeats.includes(el.id)
                   ? "chairs__chair--selected"
                   : ""
               }`}
               key={i}
-              onClick={() => askForSeat(chairs[i].available, chairs[i].id)}
+              onClick={() => askForSeat(el.available, el.id)}
             >
               <FontAwesomeIcon icon={faCouch} className="chairs__chair__icon" />
               <span className="chairs__chair__number">{el.id}</span>
