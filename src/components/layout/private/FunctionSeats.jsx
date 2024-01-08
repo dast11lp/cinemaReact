@@ -84,9 +84,17 @@ export const FunctionSeats = () => {
   return (
     <div className="function-seats">
       <div className="function-seats__content">
-        <div className="custom-section">Tickets: {howManySelectedSeats}</div>
+        <div className="custom-section">
+          <p className="custom-section__title">Tickets: {howManySelectedSeats}</p>
+          <div className="custom-section__description">
+            <p className="custom-section__description__pg">Sillas libres:  <span className="custom-section__description__pg__background chairs__chair--free"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
+            <p className="custom-section__description__pg">Sillas ocupadas:  <span className="custom-section__description__pg__background chairs__chair--reserved"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
+            <p className="custom-section__description__pg">Sillas seleccionadas:  <span className="custom-section__description__pg__background chairs__chair--selected"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
+            <p className="custom-section__description__pg">Sillas para seleccionar:  <span className="custom-section__description__pg__background chairs__chair--toReserve"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
+          </div>
+          </div>
         <div className="chairs">
-          {chairs?.map((el, i) => (
+          {chairs?.map((el, i) => ( 
             <div
               className={`chairs__chair chairs__chair--${
                 !chairs[i].available ? "reserved" : "not-reserved"

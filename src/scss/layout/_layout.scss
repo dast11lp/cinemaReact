@@ -9,9 +9,9 @@
     grid-template-areas:
         ". header header header header header header header header header header header header ."
         ". anyContent anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent  anyContent .";
-    row-gap: 2rem;
     background: v.$color-primary;
 }
+
 
 .anyContent {
     grid-area: anyContent;

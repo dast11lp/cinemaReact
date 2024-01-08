@@ -1,4 +1,5 @@
-@use "../abstracts//variables" as v;
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .function-page {
     display: grid;
@@ -73,6 +74,7 @@
             }
         }
     }
+    @include m.function-page(1200px);
 }
 
 .title-strong {

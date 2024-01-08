@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 .how-many {
     font-size: 1.8rem;
@@ -15,4 +16,5 @@
         display: flex;
         justify-content: center;
     }
+    @include m.how-many-tickets(360px);
 }
