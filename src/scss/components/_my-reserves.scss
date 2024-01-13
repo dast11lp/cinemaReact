@@ -2,6 +2,8 @@
 
 .my-reserves {
     box-shadow: v.$color-light-shadow-secundary;
+    width: 100%;
+    height: 90%;
     &__purchase-navbar {
         &__ul {
             display: flex;

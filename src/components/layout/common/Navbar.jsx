@@ -59,7 +59,7 @@ export const Navbar = () => {
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
-                <Link onClick={logOut} to="#"> Cerrar Sesión </Link>
+                <button onClick={logOut} to="#"> Cerrar Sesión </button>
                 <Link to="/usuario/miscompras"> Mis Compras </Link>
               </div>
             </div>

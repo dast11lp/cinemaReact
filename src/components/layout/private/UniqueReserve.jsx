@@ -1,41 +1,24 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUniqueReservationMiddleware } from "../../../features/UniqueReserve/uniqueReserveSlice";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const UniqueReserve = () => {
-  const dispatch = useDispatch();
+export const UniqueReserve = ({ currentItems }) => {
 
-  const userId = useSelector((state) => state.auth.userLogin?.userData?.idUser);
-  const listReservationIds = useSelector(
-    (state) => state.reservation.reservation
+  // console.log(currentItems)
+
+  return (
+    <div style={{height: '120px'}}>
+      {currentItems &&
+        currentItems.map((item, i) => (
+          <div key={i}>
+            <h3>Usuario: {item.myUser.username}</h3>
+            <p>Número de reservación{item.id}</p>
+            <p>Fecha de la reservación: {item.dateRes}</p>
+            <p>número de sillas: {item.functionChairs[0].numberChair}</p>
+            <p>Fecha de la función: {item.functionMovie.function.date}</p>
+            <p>Hora de la función: {item.functionMovie.function.hourTime}</p>
+            <p>Sala: {item.functionMovie.function.room}</p>
+          </div>
+        ))}
+    </div>
   );
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(getUniqueReservationMiddleware(userId, id));
-  }, [id]);
-
-  useEffect(() => {
-    console.log(listReservationIds);
-  }, [listReservationIds]);
-
-  if (false) {
-    return <>loading...</>;
-  } else {
-    return (
-      <div>
-        <p>idReservacion: {listReservationIds?.id}</p>
-        <p>Usuario: {listReservationIds?.myUser?.username}</p>
-        <p>Pelicula: {listReservationIds?.functionMovie?.movie?.movieName}</p>
-        <p>Sala: {listReservationIds?.functionMovie?.function?.room ? listReservationIds?.functionMovie?.function?.room : "NAN"}</p>
-        <p>Fecha: {listReservationIds?.functionMovie?.function?.date}</p>
-        <p>
-          sillas: {listReservationIds?.functionChairs?.map((el, i) => (<span key={i}>{el?.numberChair}, </span>))}
-        </p>
-        <p>Precio: </p>
-      </div>
-    );
-  }
 };

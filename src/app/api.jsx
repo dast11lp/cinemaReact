@@ -139,3 +139,20 @@ export const getReservationIds = async (idUser)  => {
     throw error
   }
 }
+
+export const getReservationByPages = async (page = 1 )  => {
+  try {
+    const request = await fetch (`${Config.hostname}reservation/user/${1}/getReservesPages?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content_type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+    const data = request.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error
+  }
+}

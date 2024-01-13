@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getReservationIds, getUniqueReservation } from "../../app/api";
+import { getReservationByPages, getReservationIds, getUniqueReservation } from "../../app/api";
 
 const initialState = {
   idReservations: [],
-  reservation: {},
+  reservations: {},
 };
 
 const uniqueReserveSlice = createSlice({
@@ -14,7 +14,7 @@ const uniqueReserveSlice = createSlice({
       state.idReservations = action.payload;
     },
     setReservation: (state, action) => {
-      state.reservation = action.payload;
+      state.reservations = action.payload;
     },
   },
 });
@@ -32,6 +32,11 @@ export const getUniqueReservationMiddleware = (idUser, idReserve) => async (disp
     const data = await getUniqueReservation(idUser, idReserve);
     dispatch(setReservation(data));
   };
+
+export const getReservationByPagesMiddleware = (page) => async (dispatch) => {
+  const data = await getReservationByPages(page);
+  dispatch(setReservation(data));
+}
 
 export const { setReservation, setIdReservations } = uniqueReserveSlice.actions;
 export default uniqueReserveSlice.reducer;
