@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   
   clearSlice,
@@ -29,6 +29,7 @@ export const FunctionSeats = () => {
 
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(functionFetchMiddleware(id));
@@ -108,6 +109,7 @@ export const FunctionSeats = () => {
     // reserva efectiva
     if(selectedSeats.length  - desiredTickets === 0) {
       dispatch(reserveFetchMiddleware(reservationDetails));
+      navigate("/compras/funcion/purchaseSummary")
     }else {
       dispatch(
         setModal({

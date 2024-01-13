@@ -7,13 +7,9 @@ import { PaginatedItems } from "../common/PaginatedItems";
 
 export const MyReserves = () => {
 
-
-  let { number } = useSelector((state) => state.reservation.reservations);
-
   return (
     <div className="my-reserves">
-      <h2>Mis Compras</h2>
-      {/* <Outlet /> */}
+      <h2 className="my-reserves__title">Mis Compras</h2>
       <PaginatedItems itemsPerPage={1} />
     </div>
   );

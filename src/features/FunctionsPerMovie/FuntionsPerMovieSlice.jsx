@@ -24,7 +24,6 @@ const listFunctionsPerMovie = createSlice({
       });
 
       state.functionPerDate = Object.fromEntries(map);
-      console.log(state.functionPerDate);
     },
   },
 });

@@ -11,6 +11,7 @@ const initialState = {
     functionChairs: [],
     idFunMov: undefined,
   },
+  purchaseSummary: {}
 };
 
 const functionSlice = createSlice({
@@ -69,6 +70,9 @@ const functionSlice = createSlice({
       } else {
       }
     },
+    setPurchaseSummary: (state, action) => {
+      state.purchaseSummary = action.payload;
+    }
   },
 });
 
@@ -85,7 +89,8 @@ export const functionFetchMiddleware = (id) => async (dispatch) => {
 export const reserveFetchMiddleware = (body) => async (dispatch) => {
   try {
     const data = await reserveFetch(body);
-    console.log(data);
+    dispatch(setPurchaseSummary(data));
+    // console.log(data);
   } catch (error) {
     throw error;
   }
@@ -102,6 +107,7 @@ export const {
   setIdSeats,
   removeIdSeats,
   setFunctionMov,
+  setPurchaseSummary,
 } = functionSlice.actions;
 
 export default functionSlice.reducer;

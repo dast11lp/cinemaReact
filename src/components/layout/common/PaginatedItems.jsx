@@ -3,6 +3,8 @@ import { UniqueReserve } from "../private/UniqueReserve";
 import ReactPaginate from "react-paginate";
 import { getReservationByPagesMiddleware } from "../../../features/UniqueReserve/uniqueReserveSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export const PaginatedItems = ({ itemsPerPage }) => {
   
@@ -10,45 +12,20 @@ export const PaginatedItems = ({ itemsPerPage }) => {
   const reservations = useSelector(
     (state) => state.reservation.reservations
   );
-  const { first, last, totalElements } = useSelector(
+  const { totalElements } = useSelector(
     (state) => state.reservation.reservations
   );
 
   const items = reservations.content ? reservations.content :[];
 
-
-    console.log(reservations)
-  ///////////////////////////////
-
   const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
 
-
-//   const currentItems = items.slice(itemOffset, endOffset);
   const currentItems = items.slice(0, 1);
   const pageCount = Math.ceil(totalElements / itemsPerPage);
   
-
   const handlePageClick = (e) => {
-    const newOffset = (e.selected * itemsPerPage) % totalElements;
     setItemOffset(e.selected + 1 );
   };
-
-
-//   const [itemOffset, setItemOffset] = useState(0);
-//   const endOffset = itemOffset + itemsPerPage;
-
-
-//   const currentItems = items.slice(itemOffset, endOffset);
-//   const pageCount = Math.ceil(items.length / itemsPerPage);
-
-//   const handlePageClick = (e) => {
-//     const newOffset = (e.selected * itemsPerPage) % items.length;
-//     setItemOffset(newOffset);
-//   };
-
-
- 
 
   useEffect(() => {
         dispatch(getReservationByPagesMiddleware(itemOffset));
@@ -56,25 +33,17 @@ export const PaginatedItems = ({ itemsPerPage }) => {
 
   return (
     <>
-      {/* <UniqueReserve currentItems={currentItems} />
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      /> */}
       <UniqueReserve currentItems={currentItems} />
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
         renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        activeClassName="isActive"
       />
     </>
   );

@@ -15,7 +15,7 @@ import { FunctionSeats } from "../components/layout/private/FunctionSeats";
 import { PublicLayout } from "../components/layout/public/PublicLayout";
 import { PrivateLayout } from "../components/layout/private/PrivateLayout";
 import { MyReserves } from "../components/layout/private/MyReserves";
-import { UniqueReserve } from "../components/layout/private/UniqueReserve";
+import { PurchaseSummary } from "../components/layout/private/PurchaseSummary";
 
 export const Routing = () => {
   const dispatch = useDispatch();
@@ -45,13 +45,12 @@ export const Routing = () => {
               <Route path="funcion/" element={<Function_ />}>
                 <Route path="tickets/:id" element={<GetTickets />} />
                 <Route path="seats/:id" element={<FunctionSeats />} />
+                <Route path="purchaseSummary" element={<PurchaseSummary />} />
               </Route>
             </Route>
 
             <Route path="/usuario" element={<PrivateLayout />}>
-              <Route path="miscompras" element={<MyReserves />}>
-                <Route path="reserva/:id" element= {<UniqueReserve />} />
-              </Route>
+              <Route path="miscompras" element={<MyReserves />}/>
             </Route>
 
             <Route
