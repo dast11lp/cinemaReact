@@ -16,6 +16,8 @@ export const PaginatedItems = ({ itemsPerPage }) => {
     (state) => state.reservation.reservations
   );
 
+  const userId = useSelector(state => state?.auth?.userLogin?.userData?.idUser) || JSON.parse(localStorage.getItem("user"))?.userData?.idUser;
+
   const items = reservations.content ? reservations.content :[];
 
   const [itemOffset, setItemOffset] = useState(0);
@@ -28,7 +30,7 @@ export const PaginatedItems = ({ itemsPerPage }) => {
   };
 
   useEffect(() => {
-        dispatch(getReservationByPagesMiddleware(itemOffset));
+        dispatch(getReservationByPagesMiddleware(itemOffset, userId));
   }, [itemOffset]);
 
   return (

@@ -33,8 +33,8 @@ export const getUniqueReservationMiddleware = (idUser, idReserve) => async (disp
     dispatch(setReservation(data));
   };
 
-export const getReservationByPagesMiddleware = (page) => async (dispatch) => {
-  const data = await getReservationByPages(page);
+export const getReservationByPagesMiddleware = (page, userId) => async (dispatch) => {
+  const data = await getReservationByPages(page, userId);
   dispatch(setReservation(data));
 }
 

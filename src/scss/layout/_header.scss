@@ -6,6 +6,9 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(50%, 120rem));
     grid-template-rows: min-content minmax(min-content, 1fr);
+    background-color: v.$color-primary;
+    
+   
 
     &__nav {
         grid-column: 1 / -1;

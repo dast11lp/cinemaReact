@@ -2,6 +2,7 @@
 
 @mixin links-navbar($breakpoint) {
     @media screen and (max-width: $breakpoint) {
+        background-color: v.$color-primary;
         &__nav {
             position: relative;
             &__brand {
@@ -21,10 +22,16 @@
                     width: 100%;
                     margin: 5px 0;
                     padding: 10px 0;
-                    background: v.$color--octonary;
+
+                    background-color: v.$color-primary;
                     border-radius: v.$border-primary;
                     &__li {
+                        &--visibility {
+                            display: flex;
+                            visibility: visible;
+                        }
                         &__link {
+                            font-size: clamp(1.2rem, 1.2vw, 1.5rem );
                         }
                     }
                 }
@@ -36,10 +43,15 @@
             &__userbox {
                 display: flex;
                 justify-content: center;
+                &--visibility {
+                    display: none;
+                    visibility: hidden;
+                }
                 &__user {
                     &__menu {
-                    }
-                    &__menu::before {
+                        &  a, &  button {
+                            font-size: clamp(1.2rem, 1.2vw, 1.5rem );
+                         }
                     }
                 }
             }

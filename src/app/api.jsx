@@ -140,9 +140,9 @@ export const getReservationIds = async (idUser)  => {
   }
 }
 
-export const getReservationByPages = async (page = 1 )  => {
+export const getReservationByPages = async (page = 1 , userId)  => {
   try {
-    const request = await fetch (`${Config.hostname}reservation/user/${1}/getReservesPages?page=${page}`, {
+    const request = await fetch (`${Config.hostname}reservation/user/${userId}/getReservesPages?page=${page}`, {
       method: "GET",
       headers: {
         "Content_type": "application/json",

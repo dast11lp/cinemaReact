@@ -12,6 +12,9 @@ export const Navbar = () => {
   const [OpenNavMenu, setOpenNavMenu] = useState(false);
 
   const user = useSelector((state) => state.auth.userLogin?.userData);
+  let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user")).userData.name;
+
+  nameUser = nameUser.toUpperCase() + " ";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,17 +48,29 @@ export const Navbar = () => {
               <li className="navbar__nav__navlinks__links__li">
                 <NavLink className="navbar__nav__navlinks__links__li__link" to="/comidas">Comidas</NavLink>
               </li>
-              {!user && 
+              {!user ? 
               <li className="navbar__nav__navlinks__links__li">
                 <NavLink className="navbar__nav__navlinks__links__li__link" to="/registro">Registrarse</NavLink>
-              </li>}
+              </li> : 
+              <li className="navbar__nav__navlinks__links__li navbar__nav__navlinks__links__li--visibility">
+              <div className="navbar__nav__user">
+                <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
+                  {nameUser}
+                  <FontAwesomeIcon icon={faUser} />
+                </div>
+                <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
+                  <button onClick={logOut} to="#"> Cerrar Sesión </button>
+                  <Link to="/usuario/miscompras"> Mis Compras </Link>
+                </div>
+            </div></li>}
+
             </ul>
           </div>
-          <div className="navbar__nav__userbox ">
+          <div className="navbar__nav__userbox navbar__nav__userbox--visibility ">
             {user ? (
             <div className="navbar__nav__user">
               <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                <img src="" alt="user" />
+                {nameUser }
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
@@ -70,24 +85,6 @@ export const Navbar = () => {
           )}
           </div>
         </div>
-
-        {/* <div className="navbar__nav">
-          {user ? (
-            <div className="navbar__nav__user">
-              <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                <img src="" alt="user" />
-                <FontAwesomeIcon icon={faUser} />
-              </div>
-              <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
-                <Link onClick={logOut} to="#"> Cerrar Sesión </Link>
-              </div>
-            </div>
-          ) : (
-            <Link to="/login" className={`button ${location.pathname == "/" &&"button--secundary"}`}>
-              Iniciar Sesión
-            </Link>
-          )}
-        </div> */}
       </div>
     </div>
   );
