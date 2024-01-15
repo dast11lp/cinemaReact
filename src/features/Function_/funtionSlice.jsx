@@ -4,8 +4,10 @@ import { functionFetch, reserveFetch } from "../../app/api";
 const initialState = {
   function_: {},
   desiredTickets: 0,
+  totalMount: 0,
   availableTickets: 0,
-  numSelectedSeats: 0,
+  numselectedIdSeats: 0,
+  selectedIdSeats: [],
   selectedSeats: [],
   reservationDetails: {
     functionChairs: [],
@@ -24,11 +26,16 @@ const functionSlice = createSlice({
         action.payload.listFunctionMovie[0].id;
     },
     addSeat: (state, action) => {
-      if (state.availableTickets > state.desiredTickets)
+      if (state.availableTickets > state.desiredTickets){
         state.desiredTickets += 1;
+        state.totalMount =  state.function_.priceTicket * state.desiredTickets;
+      }
     },
     subtractSeat: (state, action) => {
-      if (state.desiredTickets > 0) state.desiredTickets -= 1;
+      if (state.desiredTickets > 0) {
+        state.desiredTickets -= 1;
+        state.totalMount =  state.function_.priceTicket * state.desiredTickets;
+      }
     },
     getAvailableTickets: (state, action) => {
       state.availableTickets = state.function_.functionChairs.filter(
@@ -37,11 +44,13 @@ const functionSlice = createSlice({
     },
     cleardesiredTickets: (state, action) => {
       state.desiredTickets = 0;
+      state.totalMount = 0;
     },
 
     clearSlice: (state) => {
       state.function_ = {},
       state.availableTickets = 0,
+      state.selectedIdSeats = [],
       state.selectedSeats = [],
       state.reservationDetails = {
         functionChairs: [],
@@ -50,23 +59,25 @@ const functionSlice = createSlice({
     },
 
     setDesiredSeats: (state, action) => {
-      state.numSelectedSeats = action.payload;
+      state.numselectedIdSeats = action.payload;
     },
     setIdSeats: (state, action) => {
-      if (state.numSelectedSeats > 0) {
-        state.numSelectedSeats -= 1;
-        state.reservationDetails.functionChairs.push(action.payload);
-        state.selectedSeats.push(action.payload);
+      if (state.numselectedIdSeats > 0) {
+        state.numselectedIdSeats -= 1;
+        state.reservationDetails.functionChairs.push(action.payload.idSeat);
+        state.selectedIdSeats.push(action.payload.idSeat);
+        state.selectedSeats.push(action.payload.numSeat);
       } else {
         console.log("te jodiste hermano");
       }
     },
     removeIdSeats: (state, action) => {
-      if (state.numSelectedSeats >= 0) {
-        state.numSelectedSeats += 1;
-        state.reservationDetails.functionChairs = state.reservationDetails.functionChairs.filter((el) => el != action.payload);
-        console.log("el que se debe borrar: ", action.payload);
-        state.selectedSeats = state.selectedSeats.filter((el) => el != action.payload);
+      if (state.numselectedIdSeats >= 0) {
+        state.numselectedIdSeats += 1;
+        state.reservationDetails.functionChairs = state.reservationDetails.functionChairs.filter((el) => el != action.payload.idSeat);
+        state.selectedIdSeats = state.selectedIdSeats.filter((el) => el != action.payload.idSeat);
+        ///
+        state.selectedSeats = state.selectedSeats.filter((el) => el != action.payload.numSeat);
       } else {
       }
     },

@@ -9,6 +9,7 @@ export const GetTickets = () => {
 
   const dispatch = useDispatch();
   const desiredTickets = useSelector((state) => state.function_.desiredTickets);
+  const totalMount = useSelector((state) => state.function_.totalMount);
 
   const [isDisabled, setIsDisabled] = useState(true)
 
@@ -37,6 +38,9 @@ export const GetTickets = () => {
         <div className="add" onClick={() => dispatch(addSeat())}>
           <FontAwesomeIcon icon={faCirclePlus} />
         </div>
+      </div>
+      <div className="how-many__total-price">
+          <span>${totalMount}</span>
       </div>
       <div className="how-many__button-section">
         <Link to={isDisabled ? '#' : `/compras/funcion/seats/${id}`} className={`button ${isDisabled ? 'button--disabled' : '' }`}>Siguiente</Link>

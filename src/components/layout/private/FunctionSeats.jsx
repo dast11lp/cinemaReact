@@ -17,13 +17,14 @@ export const FunctionSeats = () => {
     (state) => state.function_.reservationDetails
   );
 
+  const selectedIdSeats = useSelector((state) => state.function_.selectedIdSeats);
   const selectedSeats = useSelector((state) => state.function_.selectedSeats);
   const desiredTickets = useSelector((state) => state.function_.desiredTickets);
 
   const messageWhenEmptyTickets = "Previamente debe elegir  los tickets deseados"
 
-  const howManySelectedSeats = useSelector(
-    (state) => state.function_.numSelectedSeats
+  const howManyselectedIdSeats = useSelector(
+    (state) => state.function_.numselectedIdSeats
   );
   const chairs = function_?.functionChairs;
 
@@ -38,10 +39,10 @@ export const FunctionSeats = () => {
     }
   }, []);
 
-  useEffect(() => {}, [selectedSeats]);
+  useEffect(() => {}, [selectedIdSeats]);
 
 
-  const askForSeat = (available, idSeat) => {
+  const askForSeat = (available, idSeat, numSeat) => {
     if(desiredTickets == 0) {
       dispatch(
         setModal({
@@ -54,7 +55,7 @@ export const FunctionSeats = () => {
       return;
     }
       if (available) {
-        if (selectedSeats.includes(idSeat)) {
+        if (selectedIdSeats.includes(idSeat)) {
           dispatch(
             setModal({
               type: "remove",
@@ -63,18 +64,20 @@ export const FunctionSeats = () => {
               open: true,
               others: {
                 idSeat,
+                numSeat,
               },
             })
           );
         } else {
           dispatch(
             setModal({
-              type: "reserve",
+              type: "addSeat",
               title: "Reservar",
               message: "¿Desea reservar este asiento?",
               open: true,
               others: {
                 idSeat,
+                numSeat,
               },
             })
           );
@@ -107,15 +110,24 @@ export const FunctionSeats = () => {
     }
 
     // reserva efectiva
-    if(selectedSeats.length  - desiredTickets === 0) {
-      dispatch(reserveFetchMiddleware(reservationDetails));
-      navigate("/compras/funcion/purchaseSummary")
+    if(selectedIdSeats.length  - desiredTickets === 0) {
+      dispatch(
+        setModal({
+          type: "reserve",
+          title: "Asientos seleccionados",
+          message: `Estos son los asientos seleccionados: ${selectedSeats} ¿Desea continuar?`,
+          open: true,
+          others: {
+            reservationDetails,
+          },
+        })
+      );
     }else {
       dispatch(
         setModal({
           type: "warr",
           title: "",
-          message: `Aun te faltan ${desiredTickets - selectedSeats.length } asientos por elegir`,
+          message: `Aun te faltan ${desiredTickets - selectedIdSeats.length } asientos por elegir`,
           open: true,
         })
       ); 
@@ -127,7 +139,7 @@ export const FunctionSeats = () => {
     <div className="function-seats">
       <div className="function-seats__content">
         <div className="custom-section">
-          <p className="custom-section__title">Tickets: {howManySelectedSeats}</p>
+          <p className="custom-section__title">Tickets: {howManyselectedIdSeats}</p>
           <div className="custom-section__description">
             <p className="custom-section__description__pg">Sillas libres:  <span className="custom-section__description__pg__background chairs__chair--free"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
             <p className="custom-section__description__pg">Sillas ocupadas:  <span className="custom-section__description__pg__background chairs__chair--reserved"><FontAwesomeIcon icon={faCouch} className="chairs__chair__icon chairs__chair__icon--small" /></span></p>
@@ -141,12 +153,12 @@ export const FunctionSeats = () => {
               className={`chairs__chair chairs__chair--${
                 !el.available ? "reserved" : "not-reserved"
               } ${
-                selectedSeats.includes(el.id)
+                selectedIdSeats.includes(el.id)
                   ? "chairs__chair--selected"
                   : ""
               }`}
               key={i}
-              onClick={() => askForSeat(el.available, el.id)}
+              onClick={() => askForSeat(el.available, el.id, el.numberChair)}
             >
               <FontAwesomeIcon icon={faCouch} className="chairs__chair__icon" />
               <span className="chairs__chair__number">{el.id}</span>
