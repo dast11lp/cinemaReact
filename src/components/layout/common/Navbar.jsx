@@ -11,6 +11,10 @@ export const Navbar = () => {
   const [OpenUserMenu, setOpenUserMenu] = useState(false);
   const [OpenNavMenu, setOpenNavMenu] = useState(false);
 
+  const privateUrls = ["/compras", "/ventas"];
+
+  const regex = new RegExp(privateUrls.join('|'));
+
   const user = useSelector((state) => state.auth.userLogin?.userData);
   let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user"))?.userData?.name;
 
@@ -21,7 +25,9 @@ export const Navbar = () => {
 
   const logOut = () => {
     dispatch(setLogOut());
-    navigate("/");
+    if (regex.test(location.pathname)) {
+      navigate("/", { replace: true });
+    }
   };
 
   return (
@@ -79,7 +85,7 @@ export const Navbar = () => {
               </div>
             </div>
           ) : (
-            <Link to="/login" className={`button ${location.pathname == "/" &&"button--secundary"}`}>
+            location.pathname != "/login" && <Link to="/login" className={`button ${location.pathname == "/" &&" button--secundary"}`}>
               Iniciar Sesión
             </Link>
           )}

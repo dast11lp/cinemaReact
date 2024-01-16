@@ -5,6 +5,7 @@ import listFunc from '../features/FunctionsPerMovie/FuntionsPerMovieSlice'
 import modal from '../features/Modal/modalSlice'
 import function_ from '../features/Function_/funtionSlice'
 import reservation  from "../features/UniqueReserve/uniqueReserveSlice";
+import previousPath  from "../features/PreviousPath/previousPathSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         modal,
         function_,
         reservation,
+        previousPath,
     }
 })

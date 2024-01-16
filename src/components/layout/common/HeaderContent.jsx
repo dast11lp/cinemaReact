@@ -18,13 +18,13 @@ export const HeaderContent = () => {
             </p>
           </div>
           <div className="header__content__title__box__social-media">
-              <Link to="https://www.facebook.com/" className="header__content__title__box__social-media__icon-links">
+              <Link to="https://www.facebook.com/" target="_blank"className="header__content__title__box__social-media__icon-links">
                 <FontAwesomeIcon className="header__content__title__box__social-media__icon-links__icon" icon={faFacebook} />
               </Link>
-              <Link to="https://twitter.com/"className="header__content__title__box__social-media__icon-links">
+              <Link to="https://twitter.com/" target="_blank"className="header__content__title__box__social-media__icon-links">
                 <FontAwesomeIcon className="header__content__title__box__social-media__icon-links__icon" icon={faTwitter} />
               </Link>
-              <Link to="https://www.instagram.com/"className="header__content__title__box__social-media__icon-links">
+              <Link to="https://www.instagram.com/" target="_blank" className="header__content__title__box__social-media__icon-links">
                 <FontAwesomeIcon className="header__content__title__box__social-media__icon-links__icon" icon={faInstagram} />
               </Link>
            </div>

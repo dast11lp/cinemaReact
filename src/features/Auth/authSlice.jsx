@@ -13,47 +13,40 @@ const authSlice = createSlice({
       state.userLogin = action.payload;
       localStorage.setItem("user", JSON.stringify(state.userLogin));
       localStorage.setItem("token", action.payload.Authorization);
-      
     },
     setLogOut: (state, action) => {
-      state.userLogin = {}
-      localStorage.removeItem("user"),
-      localStorage.removeItem("token")
+      state.userLogin = {};
+      localStorage.removeItem("user"), localStorage.removeItem("token");
     },
     getLogin: (state, action) => {
-      const user  = JSON.parse(localStorage.getItem("user"));
-      state.userLogin  = {...user, 
-        token: localStorage.getItem("token")
-      }
-    }
+      const user = JSON.parse(localStorage.getItem("user"));
+      state.userLogin = { ...user, token: localStorage.getItem("token") };
+    },
   },
 });
 
-export const login = (user, navigate) => async (dispatch) => {
+export const login = (user, navigate, previousPage) => async (dispatch) => {
   try {
     const data = await loginFetch(user);
     dispatch(setLogin(data));
+    
+    if (previousPage) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   } catch (error) {
     throw error;
-  }
-
-  // mover a otra parte
-  const token = localStorage.getItem("token");
-  if (token) {
-    // navigate("/");
-    window.history.back()
   }
 };
 
 export const registerFetchMiddleware = (body) => async (dispatch) => {
   try {
     const data = await registerFetch(body);
-    console.log(data)
-    dispatch
-  } catch (error) {
-    
-  }
-}
+    console.log(data);
+    dispatch;
+  } catch (error) {}
+};
 
 export const { setLogin, setLogOut, getLogin } = authSlice.actions;
 

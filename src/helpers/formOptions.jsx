@@ -45,6 +45,16 @@ const requiredGeneralMessage = "Campo Requerido"
 const confirmPassword = (value, watch, watchOptions) => value === watch(watchOptions.toCompare) || "Las contraseñas no coinciden"
 
 export const registerOptions = {
+  usernameOptions: {
+    name: "username",
+    type: "text",
+    label: "Usuario",
+    placeholder: "user123",
+    required: requiredGeneralMessage,
+    minLength: 3,
+    maxLength: 51,
+    pattern: "",
+  },
   nameOptions: {
     name: "name",
     type: "text",
@@ -65,16 +75,7 @@ export const registerOptions = {
     maxLength: 51,
     pattern: "",
   },
-  usernameOptions: {
-    name: "username",
-    type: "text",
-    label: "Usuario",
-    placeholder: "",
-    required: requiredGeneralMessage,
-    minLength: 3,
-    maxLength: 51,
-    pattern: "",
-  },
+  
 
   passwordOptions: {
     name: "password",
