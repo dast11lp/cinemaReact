@@ -8,7 +8,9 @@ export const FunctionsMovie = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const listFuntions = useSelector((state) => state.listFunc.movieFunction);
-  const functionPerDate = useSelector((state) => state.listFunc.functionPerDate);
+  const functionPerDate = useSelector(
+    (state) => state.listFunc.functionPerDate
+  );
 
   getFuncMovieMiddleware(id);
 
@@ -23,47 +25,53 @@ export const FunctionsMovie = () => {
           <h2 className="function-page__movie-details__title">
             {listFuntions.movieName}
           </h2>
+          <div className="function-page__movie-details__content">
+            <div className="function-page__movie-details__content__img-box">
+              <img
+                src={listFuntions.poster}
+                alt="img"
+                className="function-page__movie-details__content__img-box__img"
+              />
+            </div>
 
-          <img
-            src={listFuntions.poster}
-            alt="img"
-            className="function-page__movie-details__img"
-          />
+            <div className="function-page__movie-details__content__meta-data">
+              <p className="function-page__movie-details__content__meta-data__language">
+                <span className="title-strong">Idioma:</span>
+                {listFuntions.language}
+              </p>
+              <p className="function-page__movie-details__content__meta-data__director">
+                <span className="title-strong">director:</span>
+                {listFuntions.director}
+              </p>
+              <p className="function-page__movie-details__content__meta-data__country">
+                <span className="title-strong">País de origen:</span>
+                {listFuntions.country}
+              </p>
+              <p className="function-page__movie-details__content__meta-data__protagonists">
+                <span className="title-strong">Protagonistas:</span>
+                {listFuntions.protagonists}
+              </p>
+            </div>
 
-          <div className="function-page__movie-details__meta-data">
-            <p className="function-page__movie-details__meta-data__language">
-              
-              <span className="title-strong">Idioma:</span>
-              {listFuntions.language}
-            </p>
-            <p className="function-page__movie-details__meta-data__director">
-              <span className="title-strong">director:</span>
-              {listFuntions.director}
-            </p>
-            <p className="function-page__movie-details__meta-data__country">
-              <span className="title-strong">País de origen:</span>
-              {listFuntions.country}
-            </p>
-            <p className="function-page__movie-details__meta-data__protagonists">
-              <span className="title-strong">Protagonistas:</span>
-              {listFuntions.protagonists}
-            </p>
-          </div>
-
-          <div className="function-page__movie-details__description">
-            <h2 className="function-page__movie-details__description__title">
-              Sinopsis
-            </h2>
-            <p className="">{listFuntions.descripction}</p>
+            <div className="function-page__movie-details__content__description">
+              <h2 className="function-page__movie-details__content__description__title">
+                Sinopsis
+              </h2>
+              <p className="">{listFuntions.descripction}</p>
+            </div>
           </div>
         </div>
 
         <div className="function-page__function-list">
-
-          {Object.keys(functionPerDate).map((key,i)=>{
-            return ( 
-              <FunctionItem key={key} functionsMovie={functionPerDate[key]} functionsDate= {Object.keys(functionPerDate)[i]}/>
-          )})}
+          {Object.keys(functionPerDate).map((key, i) => {
+            return (
+              <FunctionItem
+                key={key}
+                functionsMovie={functionPerDate[key]}
+                functionsDate={Object.keys(functionPerDate)[i]}
+              />
+            );
+          })}
         </div>
       </div>
     </>

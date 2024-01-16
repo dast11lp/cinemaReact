@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .card {
     display: grid;
@@ -45,4 +46,5 @@
     &:hover {
         transform: scale(1.1);
     }
+    @include m.card(365px);
 }
