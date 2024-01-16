@@ -12,9 +12,9 @@ export const Navbar = () => {
   const [OpenNavMenu, setOpenNavMenu] = useState(false);
 
   const user = useSelector((state) => state.auth.userLogin?.userData);
-  let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user")).userData.name;
+  let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user"))?.userData?.name;
 
-  nameUser = nameUser.toUpperCase() + " ";
+  nameUser = nameUser && nameUser.toUpperCase() + " ";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export const Navbar = () => {
               <li className="navbar__nav__navlinks__links__li navbar__nav__navlinks__links__li--visibility">
               <div className="navbar__nav__user">
                 <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                  {nameUser}
+                  {nameUser ? nameUser : ''}
                   <FontAwesomeIcon icon={faUser} />
                 </div>
                 <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
@@ -70,7 +70,7 @@ export const Navbar = () => {
             {user ? (
             <div className="navbar__nav__user">
               <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                {nameUser }
+                {nameUser ? nameUser : ''}
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >

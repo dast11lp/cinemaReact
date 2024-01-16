@@ -15,7 +15,7 @@ export const PurchaseSummary = () => {
               <h3 className="unique-reserve__content__item unique-reserve__content__item--title">Usuario: <span>{purchaseSummary?.username}</span></h3>
               <h3 className="unique-reserve__content__item unique-reserve__content__item--title">Película: <span>{purchaseSummary?.movieName}</span></h3>
               <p className="unique-reserve__content__item unique-reserve__content__item--pg">Fecha de la reservación: {formatDate(purchaseSummary?.dateRes)}</p>
-              <p className="unique-reserve__content__item unique-reserve__content__item--pg">número de sillas: {purchaseSummary &&purchaseSummary?.chairs.map((el, i) => <span key={i}>{el}, </span>)}</p>
+              <p className="unique-reserve__content__item unique-reserve__content__item--pg">número de sillas: {purchaseSummary.chairs && purchaseSummary?.chairs.map((el, i) => <span key={i}>{el}, </span>)}</p>
               <p className="unique-reserve__content__item unique-reserve__content__item--pg">Fecha de la función: {purchaseSummary?.dateFunc}</p>
               <p className="unique-reserve__content__item unique-reserve__content__item--pg">Hora de la función: {purchaseSummary?.hourTime}</p>
               <p className="unique-reserve__content__item unique-reserve__content__item--pg">Sala: {purchaseSummary?.room}</p>
