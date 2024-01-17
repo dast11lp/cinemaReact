@@ -17,7 +17,6 @@ export const Navbar = () => {
 
   // const user = useSelector((state) => state.auth.userLogin?.userData) || JSON.parse(localStorage.getItem("user"))?.userData;
   const user =  JSON.parse(localStorage.getItem("user"))?.userData;
-  console.log(user);
   let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user"))?.userData?.name;
 
   nameUser = nameUser && nameUser.toUpperCase() + " ";
@@ -48,13 +47,13 @@ export const Navbar = () => {
             </div>
             <ul className={`navbar__nav__navlinks__links ${OpenNavMenu && "active-menu-2"}`} >
               <li className="navbar__nav__navlinks__links__li">
-                <NavLink className="navbar__nav__navlinks__links__li__link" to="/">Inicio</NavLink>
+                <NavLink className="navbar__nav__navlinks__links__li__link" to="/common">Inicio</NavLink>
               </li>
               <li className="navbar__nav__navlinks__links__li">
-                <NavLink className="navbar__nav__navlinks__links__li__link" to="/cartelera">Cartelera</NavLink>
+                <NavLink className="navbar__nav__navlinks__links__li__link" to="/common/cartelera">Cartelera</NavLink>
               </li>
               <li className="navbar__nav__navlinks__links__li">
-                <NavLink className="navbar__nav__navlinks__links__li__link" to="/comidas">Comidas</NavLink>
+                <NavLink className="navbar__nav__navlinks__links__li__link" to="/common/comidas">Comidas</NavLink>
               </li>
               {!user ? 
               <li className="navbar__nav__navlinks__links__li">

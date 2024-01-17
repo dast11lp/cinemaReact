@@ -22,7 +22,7 @@ export const PurchaseSummary = () => {
               <p className="unique-reserve__content__item unique-reserve__content__item--pg">Precio Total: {purchaseSummary?.totalMount}</p>
           </div>
     </div>
-    <Link to="/cartelera" className="button">Seguir Comprando</Link>
+    <Link to="/common/cartelera" className="button">Seguir Comprando</Link>
   </div>
 )
 };

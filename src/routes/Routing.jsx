@@ -16,6 +16,7 @@ import { PublicLayout } from "../components/layout/public/PublicLayout";
 import { PrivateLayout } from "../components/layout/private/PrivateLayout";
 import { MyReserves } from "../components/layout/private/MyReserves";
 import { PurchaseSummary } from "../components/layout/private/PurchaseSummary";
+import { CommonLayout } from "../components/layout/common/CommonLayout";
 
 export const Routing = () => {
   const dispatch = useDispatch();
@@ -33,12 +34,15 @@ export const Routing = () => {
         <Header />
         <div className="anyContent">
           <Routes>
-            <Route path="/" element={<PublicLayout />}>
-              <Route path="login" element={<Login />} />
-              <Route path="cartelera" element={<ListingMovies />} />
-              <Route path="registro" element={<Register />} />
+            <Route path="/common" element={<CommonLayout />}>
+            <Route path="cartelera" element={<ListingMovies />} />
               <Route path="comidas" element={<Food />} />
               <Route path="funciones/:id" element={<FunctionsMovie />} />
+            </Route>
+
+            <Route path="/" element={<PublicLayout />}>
+              <Route path="login" element={<Login />} />
+              <Route path="registro" element={<Register />} />
             </Route>
 
             <Route path="/compras" element={<PrivateLayout />}>
