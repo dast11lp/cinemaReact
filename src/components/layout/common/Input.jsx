@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router-dom";
 
 export const Input = ({
   name,
@@ -20,6 +21,8 @@ export const Input = ({
   watch,
   watchOptions,
 }) => {
+
+  const location = useLocation();
 
   const handleViewPassword = ({ target }) => {
     const passwordInput = document.querySelector("input[name='password']");
@@ -44,14 +47,14 @@ export const Input = ({
 
         {!validateCustom ? (
           <input
-            className="input__field"
+            className={`input__field ${location.pathname == "/login" ? "input__field--login" : ""}`}
             {...register(name, { required, minLength, maxLength, pattern })}
             type={type}
             placeholder={placeholder}
           />
         ) : (
           <input
-            className="input__field"
+            className={`input__field ${location.pathname == "/login" ? "input__field--login" : ""}`}
             {...register(name, {
               required,
               minLength,

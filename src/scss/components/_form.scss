@@ -1,4 +1,4 @@
-@use '../abstracts/variables' as v;
+@use "../abstracts/variables" as v;
 
 .form-box {
     display: flex;
@@ -13,31 +13,34 @@
 
     .heading-primary {
         font-size: v.$heading-secundary;
+        text-align: center;
     }
 
     &__info {
         display: flex;
-        flex: 0 0 20rem;
+        justify-content: center;
         align-items: center;
+        flex: 1 1;
+        margin: 0 5px;
         &__form {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
             height: 25rem;
+            padding: 0 clamp(.5rem,10vw,12rem);
         }
     }
 
     &__brand {
         display: flex;
+        justify-content: center;
         align-items: center;
+        flex: 1 1;
+        margin: 0 5px;
         &__clipBoard {
             width: 50vw;
             max-width: 35rem;
         }
     }
 }
-
-
-
-

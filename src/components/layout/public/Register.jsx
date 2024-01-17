@@ -14,8 +14,6 @@ export const Register = () => {
   });
   const [formOptions, setFormOptions] = useState({ ...registerOptions });
 
-  console.log(errors)
-
   const onSubmit = (data)  => {
     dispatch(registerFetchMiddleware(data))
   }

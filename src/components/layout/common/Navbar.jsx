@@ -37,7 +37,7 @@ export const Navbar = () => {
         <div className="navbar__nav">
           <div className="navbar__nav__brand">
             {/* <svg></svg> */}
-            <Link className="navbar__nav__brand__name" to="/">
+            <Link className="navbar__nav__brand__name" to="/common">
               CinePop
             </Link>
           </div>
@@ -47,7 +47,7 @@ export const Navbar = () => {
             </div>
             <ul className={`navbar__nav__navlinks__links ${OpenNavMenu && "active-menu-2"}`} >
               <li className="navbar__nav__navlinks__links__li">
-                <NavLink className="navbar__nav__navlinks__links__li__link" to="/common">Inicio</NavLink>
+                <NavLink className="navbar__nav__navlinks__links__li__link" to="/common" end>Inicio</NavLink>
               </li>
               <li className="navbar__nav__navlinks__links__li">
                 <NavLink className="navbar__nav__navlinks__links__li__link" to="/common/cartelera">Cartelera</NavLink>

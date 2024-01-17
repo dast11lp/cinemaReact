@@ -3,6 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     &__label {
         margin-bottom: 5px;
@@ -13,9 +14,13 @@
         border: none;
         background-color: v.$color-quaternary;
         height: 4rem;
-        min-width: 30rem;
         border-radius: 7px;
         padding: 2rem 4rem;
+        width: 100%;
+
+        &--login {
+            min-width: 19rem;
+        }
     }
 
     .icon-awesome {

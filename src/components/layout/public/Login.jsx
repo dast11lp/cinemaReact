@@ -37,7 +37,7 @@ export const Login = () => {
             className="form-box__info__form"
           >
             <h2 className="heading-primary">
-              Registrate en CinePop para continuar
+              Inicia Sesión en CinePop para continuar
             </h2>
             <Input
               name="username"
