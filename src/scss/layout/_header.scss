@@ -31,20 +31,20 @@
 
         display: grid;
         justify-self: center;
-        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         justify-items: center;
         align-items: center;
 
         &__title {
             &__box {
                 height: 30rem;
-                width: 30rem;
+                max-width: 30rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-evenly;
                 &__img {
-                    height: 150px;
+                    max-width: 90%;
                 }
                 &__info {
                     display: flex;
@@ -77,7 +77,7 @@
             &__message{
                 text-align: center;
                 font-family: 'Star Killer';
-                font-size: 4.7vw;
+                font-size: clamp(1.6rem, 4.7vw, 5rem);
             }
         }
     }

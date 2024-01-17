@@ -1,12 +1,10 @@
 @use '../abstracts/variables' as v;
 
 .button {
-
-
-    padding: 1rem 2rem;
+    padding: clamp(.5rem, 1vw, 1rem);
     background: v.$color-secundary;
     color: v.$color-tertiary;
-    font-size: 1.6rem;
+    font-size: clamp(1rem,3vw,1.6rem);
     font-weight: 700;
 
     border-radius: 4px;
@@ -29,7 +27,7 @@
     }
 
     &--nav {
-        font-size: 1.5rem;
+        font-size: clamp(1rem,3vw,1.5rem);
         font-weight: 400;
         background-color: v.$color-secundary;
         color: v.$color-primary;

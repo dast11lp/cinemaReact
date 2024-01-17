@@ -33,18 +33,18 @@
             position: absolute;
             top: 5px;
             right: 5px;
-            font-size: 3rem;
+            font-size: clamp(2rem,3vw,3rem);
         }
 
         &__content {
             text-align: center;
             & h2 {
                 color: v.$color--error-primary;
-                font-size: 5rem;
+                font-size: clamp(1.1rem,5vw,5rem);
             }
     
             & p {
-                font-size: 1.8rem;
+                font-size: clamp(1.1rem,3vw,1.8rem);
                 text-align: center;
             }
         }
@@ -56,6 +56,6 @@
         align-items: center;
         margin: 5px;
         width: 100%;
-
+        
     }
 }

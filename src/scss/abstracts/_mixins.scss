@@ -2,7 +2,7 @@
 
 @mixin links-navbar($breakpoint) {
     @media screen and (max-width: $breakpoint) {
-        background-color: v.$color-primary;
+        // background-color: v.$color-primary;
         &__nav {
             position: relative;
             &__brand {
@@ -31,7 +31,7 @@
                             visibility: visible;
                         }
                         &__link {
-                            font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+                            font-size: clamp(1.1rem, 5vw, 1.5rem);
                         }
                     }
                 }
@@ -47,12 +47,19 @@
                     display: none;
                     visibility: hidden;
                 }
-                &__user {
-                    &__menu {
-                        & a,
-                        & button {
-                            font-size: clamp(1.2rem, 1.2vw, 1.5rem);
-                        }
+                
+            }
+            &__user {
+                &__menu {
+                    & a,
+                    & button {
+                        font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+                    }
+                }
+                &__button {
+                    &__username {   
+                        display: none;
+                        visibility: hidden;
                     }
                 }
             }
@@ -61,15 +68,15 @@
 }
 
 @mixin function-page($breakpoint) {
-    @if($breakpoint <= 1200px) {
+    @if ($breakpoint <= 1200px) {
         @media screen and (max-width: $breakpoint) {
             grid-template-columns: 1fr;
             grid-template-rows: min-content;
             min-width: 20rem;
             width: 85vw;
             height: min-content;
-    
-            &__movie-details { 
+
+            &__movie-details {
                 height: min-content;
                 &__content {
                     flex-direction: row;
@@ -78,23 +85,23 @@
                     }
 
                     & > * {
-                        margin: .5rem;
+                        margin: 0.5rem;
                     }
                 }
             }
         }
     }
-    @if($breakpoint <= 815px) {
-       @media screen and (max-width: $breakpoint) {
-        &__movie-details { 
-            &__content {
-                flex-direction: column;
-                & > * {
-                    margin: 0;
+    @if ($breakpoint <= 815px) {
+        @media screen and (max-width: $breakpoint) {
+            &__movie-details {
+                &__content {
+                    flex-direction: column;
+                    & > * {
+                        margin: 0;
+                    }
                 }
             }
         }
-       }
     }
 }
 

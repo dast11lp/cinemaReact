@@ -15,7 +15,9 @@ export const Navbar = () => {
 
   const regex = new RegExp(privateUrls.join('|'));
 
-  const user = useSelector((state) => state.auth.userLogin?.userData);
+  // const user = useSelector((state) => state.auth.userLogin?.userData) || JSON.parse(localStorage.getItem("user"))?.userData;
+  const user =  JSON.parse(localStorage.getItem("user"))?.userData;
+  console.log(user);
   let nameUser = useSelector((state) => state.auth.userLogin?.userData?.name) || JSON.parse(localStorage.getItem("user"))?.userData?.name;
 
   nameUser = nameUser && nameUser.toUpperCase() + " ";
@@ -61,7 +63,7 @@ export const Navbar = () => {
               <li className="navbar__nav__navlinks__links__li navbar__nav__navlinks__links__li--visibility">
               <div className="navbar__nav__user">
                 <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                  {nameUser ? nameUser : ''}
+                {nameUser ? <span className={`navbar__nav__user__button__username`}>{nameUser}</span> : ''}
                   <FontAwesomeIcon icon={faUser} />
                 </div>
                 <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
@@ -72,11 +74,11 @@ export const Navbar = () => {
 
             </ul>
           </div>
-          <div className="navbar__nav__userbox navbar__nav__userbox--visibility ">
+          <div className={`navbar__nav__userbox ${user ? 'navbar__nav__userbox--visibility': ''} `} >
             {user ? (
             <div className="navbar__nav__user">
               <div className="navbar__nav__user__button" onClick={() => setOpenUserMenu(!OpenUserMenu)} >
-                {nameUser ? nameUser : ''}
+              {nameUser ? <span className="navbar__nav__user__button__username">{nameUser}</span> : ''}
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className={`navbar__nav__user__menu ${ OpenUserMenu && "active-menu" }`} >
